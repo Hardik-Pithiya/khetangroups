@@ -1,0 +1,2163 @@
+[
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-09-18 14:57:49.113552",
+  "module": "khetangroup",
+  "name": "Item-wise sales party list",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Sales Invoice",
+  "reference_report": null,
+  "report_name": "Item-wise sales party list",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Item-wise sales party list",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "Item-wise sales party list",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Item-wise sales party list",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee Self Service"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [
+   {
+    "fieldname": "se.stock_entry_type",
+    "fieldtype": "Data",
+    "label": "Stock Entry Type",
+    "options": null,
+    "parent": "Material Transfer Unit-1",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "se.posting_date",
+    "fieldtype": "Date",
+    "label": "Posting Date",
+    "options": null,
+    "parent": "Material Transfer Unit-1",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "se_item.s_warehouse",
+    "fieldtype": "Data",
+    "label": "From Warehouse",
+    "options": null,
+    "parent": "Material Transfer Unit-1",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "se_item.t_warehouse",
+    "fieldtype": "Data",
+    "label": "To Warehouse",
+    "options": null,
+    "parent": "Material Transfer Unit-1",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "se_item.item_code",
+    "fieldtype": "Link",
+    "label": "Item Name",
+    "options": "Item",
+    "parent": "Material Transfer Unit-1",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "se_item.qty",
+    "fieldtype": "Data",
+    "label": "Qty",
+    "options": null,
+    "parent": "Material Transfer Unit-1",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   }
+  ],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Material Transfer Unit-1",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Material Transfer Unit-1",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "",
+  "modified": "2023-09-18 14:57:49.372911",
+  "module": "khetangroup",
+  "name": "Material Transfer Unit-1",
+  "prepared_report": 0,
+  "query": "select\n    se.stock_entry_type as 'Stock Entry Type',\n    \n    \n\tse.posting_date as \"Posting Date\",\n\tse_item.s_warehouse as \"From Warehouse\",\n\tse_item.t_warehouse as \"To Warehouse\",\n    se_item.item_code as \"Item Name:Link/Item:120\",\n    se_item.qty as \"Qty:Float:100\"\nfrom\n\t`tabStock Entry` se, `tabStock Entry Detail` se_item\n\nwhere\n\tse.name = se_item.parent \n\tand\n    se.stock_entry_type = \"Material Transfer\"\n    and\n    se.company = \"Khetan Udyog\"\nAND\n (\n       DATE(se.posting_date) between %(from_date) s\n       and %(to_date) s\n   )\n     \n\n\n     \n\n",
+  "ref_doctype": "Stock Entry",
+  "reference_report": null,
+  "report_name": "Material Transfer Unit-1",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Material Transfer Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Material Transfer Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Material Transfer Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Material Transfer Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing Manager"
+   },
+   {
+    "parent": "Material Transfer Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": "Khetan Logo",
+  "modified": "2023-09-18 14:59:52.806657",
+  "module": "khetangroup",
+  "name": "Operation Wise Production Report",
+  "prepared_report": 0,
+  "query": "",
+  "ref_doctype": "Stock Entry",
+  "reference_report": null,
+  "report_name": "Operation Wise Production Report",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Operation Wise Production Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Operation Wise Production Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Operation Wise Production Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Operation Wise Production Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing Manager"
+   },
+   {
+    "parent": "Operation Wise Production Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [
+   {
+    "fieldname": "se.posting_date",
+    "fieldtype": "Date",
+    "label": " Date",
+    "options": null,
+    "parent": "Material Issue Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "se.shift_type",
+    "fieldtype": "Data",
+    "label": "Shift Type",
+    "options": null,
+    "parent": "Material Issue Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "se.supervisor_name",
+    "fieldtype": "Data",
+    "label": "Supervisor Name",
+    "options": null,
+    "parent": "Material Issue Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "se_item.item_name",
+    "fieldtype": "Data",
+    "label": "Item Name",
+    "options": "",
+    "parent": "Material Issue Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 150
+   },
+   {
+    "fieldname": "se_item.qty",
+    "fieldtype": "Data",
+    "label": "Qty",
+    "options": null,
+    "parent": "Material Issue Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 100
+   },
+   {
+    "fieldname": "se_item.employee_id",
+    "fieldtype": "Link",
+    "label": "Employee Id",
+    "options": "Employee",
+    "parent": "Material Issue Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 150
+   },
+   {
+    "fieldname": "se_item.purpose",
+    "fieldtype": "Data",
+    "label": "Purpose",
+    "options": null,
+    "parent": "Material Issue Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 150
+   },
+   {
+    "fieldname": "se_item.department",
+    "fieldtype": "Data",
+    "label": "Department",
+    "options": null,
+    "parent": "Material Issue Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 150
+   }
+  ],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Material Issue Unit-2",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Material Issue Unit-2",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "",
+  "modified": "2023-09-18 14:57:49.266982",
+  "module": "khetangroup",
+  "name": "Material Issue Unit-2",
+  "prepared_report": 0,
+  "query": "select\n\tse.posting_date as \"Posting Date\",\n\t    se.shift_type as 'Shift Type',\n    se.supervisor_name as 'Supervisor Name',\n\n\n    se_item.item_name as \"Item Name:Link/Item:120\",\n    se_item.qty as \"Qty:Float:100\",\n    se_item.employee_id as \"Employee Id\",\n    se_item.purpose as \"Purpose\",\n    se_item.department as \"Department\"\nfrom\n\t`tabStock Entry` se, `tabStock Entry Detail` se_item\n\nwhere\n\tse.name = se_item.parent \n\tand\n\tse.docstatus = 1\n\tand\n    se.stock_entry_type = \"Material Issue\"\n    and \n    se.company = \"SANTOSH UNIT 2\"\nAND\n (\n       DATE(se.posting_date) between %(from_date) s\n       and %(to_date) s\n   )\n     \n\n",
+  "ref_doctype": "Stock Entry",
+  "reference_report": null,
+  "report_name": "Material Issue Unit-2",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Material Issue Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Material Issue Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Material Issue Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Material Issue Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing Manager"
+   },
+   {
+    "parent": "Material Issue Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [
+   {
+    "fieldname": "se.stock_entry_type",
+    "fieldtype": "Data",
+    "label": "Stock Entry Type",
+    "options": null,
+    "parent": "Material Transfer Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "se.posting_date",
+    "fieldtype": "Date",
+    "label": "Posting Date",
+    "options": null,
+    "parent": "Material Transfer Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "se_item.s_warehouse",
+    "fieldtype": "Data",
+    "label": "From Warehouse",
+    "options": null,
+    "parent": "Material Transfer Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "se_item.t_warehouse",
+    "fieldtype": "Data",
+    "label": "To Warehouse",
+    "options": null,
+    "parent": "Material Transfer Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "se_item.item_code",
+    "fieldtype": "Link",
+    "label": "Item Name",
+    "options": "Item",
+    "parent": "Material Transfer Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 200
+   },
+   {
+    "fieldname": "se_item.qty",
+    "fieldtype": "Data",
+    "label": "Qty",
+    "options": null,
+    "parent": "Material Transfer Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 100
+   }
+  ],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Material Transfer Unit-2",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Material Transfer Unit-2",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "",
+  "modified": "2023-09-18 14:57:49.334421",
+  "module": "khetangroup",
+  "name": "Material Transfer Unit-2",
+  "prepared_report": 0,
+  "query": "select\n    se.stock_entry_type as 'Stock Entry Type',\n    \n    \n\tse.posting_date as \"Posting Date\",\n\tse_item.s_warehouse as \"From Warehouse\",\n\tse_item.t_warehouse as \"To Warehouse\",\n    se_item.item_code as \"Item Name:Link/Item:120\",\n    se_item.qty as \"Qty:Float:100\"\nfrom\n\t`tabStock Entry` se, `tabStock Entry Detail` se_item\n\nwhere\n\tse.name = se_item.parent \n\tand\n    se.stock_entry_type = \"Material Transfer\"\n    and\n    se.company = \"SANTOSH UNIT 2\"\nAND\n (\n       DATE(se.posting_date) between %(from_date) s\n       and %(to_date) s\n   )\n     \n\n\n     \n\n",
+  "ref_doctype": "Stock Entry",
+  "reference_report": null,
+  "report_name": "Material Transfer Unit-2",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Material Transfer Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Material Transfer Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Material Transfer Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Material Transfer Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing Manager"
+   },
+   {
+    "parent": "Material Transfer Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [
+   {
+    "fieldname": "se.posting_date",
+    "fieldtype": "Date",
+    "label": " Date",
+    "options": null,
+    "parent": "Material Receipt Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "t_warehouse",
+    "fieldtype": "Data",
+    "label": "Warehouse",
+    "options": null,
+    "parent": "Material Receipt Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 200
+   },
+   {
+    "fieldname": "se_item.item_name",
+    "fieldtype": "Link",
+    "label": "Item Name",
+    "options": "Item",
+    "parent": "Material Receipt Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 150
+   },
+   {
+    "fieldname": "se_item.qty",
+    "fieldtype": "Data",
+    "label": "Qty",
+    "options": null,
+    "parent": "Material Receipt Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 100
+   },
+   {
+    "fieldname": "se_item.employee_id",
+    "fieldtype": "Link",
+    "label": "Employee Id",
+    "options": "Employee",
+    "parent": "Material Receipt Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 150
+   }
+  ],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Material Receipt Unit-2",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Material Receipt Unit-2",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "",
+  "modified": "2023-09-18 14:57:49.209595",
+  "module": "khetangroup",
+  "name": "Material Receipt Unit-2",
+  "prepared_report": 0,
+  "query": "select\n   \n\tse.posting_date as \"Posting Date\",\n\tse_item.t_warehouse as \"Warehouse\",\n    se_item.item_name as \"Item Name:Link/Item:120\",\n    se_item.qty as \"Qty:Float:100\",\n    se_item.employee_id as \"Employee Id\"\nfrom\n\t`tabStock Entry` se, `tabStock Entry Detail` se_item\n\nwhere\n\tse.name = se_item.parent \n\tand\n    se.stock_entry_type = \"Material Receipt\"\n    and\n    se.company = \"SANTOSH UNIT 2\"\nAND\n(\n       DATE(se.posting_date) between %(from_date) s\n       and %(to_date) s\n   )\n     \n\n\n  \n     \n\n",
+  "ref_doctype": "Stock Entry",
+  "reference_report": null,
+  "report_name": "Material Receipt Unit-2",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Material Receipt Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Material Receipt Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Material Receipt Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Material Receipt Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing Manager"
+   },
+   {
+    "parent": "Material Receipt Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 1,
+  "columns": [
+   {
+    "fieldname": "p.posting_date",
+    "fieldtype": "Date",
+    "label": "Date",
+    "options": null,
+    "parent": "Daily Production Report Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 100
+   },
+   {
+    "fieldname": "p.shift_type",
+    "fieldtype": "Data",
+    "label": "Shift ",
+    "options": null,
+    "parent": "Daily Production Report Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "p.manufacturing_type",
+    "fieldtype": "Data",
+    "label": "Manufacturing Type",
+    "options": null,
+    "parent": "Daily Production Report Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 150
+   },
+   {
+    "fieldname": "p.operation",
+    "fieldtype": "Data",
+    "label": "Operation",
+    "options": null,
+    "parent": "Daily Production Report Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 150
+   },
+   {
+    "fieldname": "p.machine",
+    "fieldtype": "Data",
+    "label": "Machine",
+    "options": null,
+    "parent": "Daily Production Report Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 150
+   },
+   {
+    "fieldname": "p.supervisor_name",
+    "fieldtype": "Data",
+    "label": "Supervisor Name",
+    "options": null,
+    "parent": "Daily Production Report Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 150
+   },
+   {
+    "fieldname": "p.senior_operator_name",
+    "fieldtype": "Data",
+    "label": "Senior Operator Name",
+    "options": null,
+    "parent": "Daily Production Report Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "p.operator_name",
+    "fieldtype": "Data",
+    "label": "Operator Name",
+    "options": null,
+    "parent": "Daily Production Report Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "finish.item_name",
+    "fieldtype": "Data",
+    "label": "Finished Item Name",
+    "options": "",
+    "parent": "Daily Production Report Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 200
+   },
+   {
+    "fieldname": "finish.qty",
+    "fieldtype": "Data",
+    "label": "Finished Qty",
+    "options": null,
+    "parent": "Daily Production Report Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "scrap.qty",
+    "fieldtype": "Data",
+    "label": "Scrap Qty",
+    "options": null,
+    "parent": "Daily Production Report Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "reject.qty",
+    "fieldtype": "Data",
+    "label": "Reject Qty",
+    "options": null,
+    "parent": "Daily Production Report Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   }
+  ],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Daily Production Report Unit-2",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Daily Production Report Unit-2",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "",
+  "modified": "2023-09-18 14:57:49.235483",
+  "module": "khetangroup",
+  "name": "Daily Production Report Unit-2",
+  "prepared_report": 0,
+  "query": "with finish as( Select fq.qty, \nfq.item_name, fq.parent from \n`tabStock Entry` fp  left outer join `tabStock Entry Detail` fq on fq.parent = fp.name\nwhere fq.is_finished__item = 1 AND fp.stock_entry_type = \"Manufacturing Unit-2\"), \nscrap as(Select sq.qty,sq.parent from `tabStock Entry` sp \nleft outer join `tabStock Entry Detail` sq on sq.parent = sp.name \nwhere sq.is_scrap_item= 1 AND sp.stock_entry_type = \"Manufacturing Unit-2\"),\nreject as(Select rq.qty,rq.parent from `tabStock Entry` rp\n left outer join `tabStock Entry Detail` rq on rq.parent = rp.name \nwhere rq.rejected_item = 1 AND rp.stock_entry_type = \"Manufacturing Unit-2\")\n\nSelect DISTINCT\np.posting_date as \"Posting Date\",\np.shift_type as \"Shift\",\np.manufacturing_type as \"Manufacturing Type\",\np.machine as \"Machine\",\np.operation as \"Operation\",\np.supervisor_name as \"Supervisor Name\",\np.senior_operator_name as \"Senior Operator Name\",\np.operator_name as \"Operator Name\",\nfinish.item_name as \"Finished Item\",\nIFNULL(finish.qty, 0) as \"Finished Qty\", \nIFNULL(scrap.qty,0) as \"Scrap Qty\",\nIFNULL(reject.qty, 0) as \"Reject Qty\"\n\n \n\nfrom `tabStock Entry` p left outer join `tabStock Entry Detail` q on q.parent = p.name \nleft outer join finish on finish.parent=p.name \nleft outer join scrap on scrap.parent=p.name \nleft outer join reject on reject.parent=p.name\nwhere  q.s_warehouse IS NOT NULL AND p.stock_entry_type = \"Manufacturing Unit-2\"\nand p.docstatus = 1 \nAND ( DATE(p.posting_date) between %(from_date) s and %(to_date) s ) \n\n\n ORDER BY p.`posting_date` DESC\n",
+  "ref_doctype": "Stock Entry",
+  "reference_report": null,
+  "report_name": "Daily Production Report Unit-2",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Daily Production Report Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Daily Production Report Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Daily Production Report Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Daily Production Report Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing Manager"
+   },
+   {
+    "parent": "Daily Production Report Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [
+   {
+    "fieldname": "se.posting_date",
+    "fieldtype": "Date",
+    "label": " Date",
+    "options": null,
+    "parent": "Material Issue Unit-1",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 150
+   },
+   {
+    "fieldname": "se.shift_type",
+    "fieldtype": "Data",
+    "label": "Shift Type",
+    "options": null,
+    "parent": "Material Issue Unit-1",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "se_item.item_name",
+    "fieldtype": "Link",
+    "label": "Item Name",
+    "options": "Item",
+    "parent": "Material Issue Unit-1",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 250
+   },
+   {
+    "fieldname": "se_item.qty",
+    "fieldtype": "Data",
+    "label": "Qty",
+    "options": null,
+    "parent": "Material Issue Unit-1",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 100
+   },
+   {
+    "fieldname": "se_item.employee_id",
+    "fieldtype": "Link",
+    "label": "Employee Id",
+    "options": "Employee",
+    "parent": "Material Issue Unit-1",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 150
+   },
+   {
+    "fieldname": "se_item.purpose",
+    "fieldtype": "Data",
+    "label": "Purpose",
+    "options": null,
+    "parent": "Material Issue Unit-1",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 150
+   },
+   {
+    "fieldname": "se_item.department",
+    "fieldtype": "Data",
+    "label": "Department",
+    "options": null,
+    "parent": "Material Issue Unit-1",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 150
+   }
+  ],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Material Issue Unit-1",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Material Issue Unit-1",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "",
+  "modified": "2023-09-18 14:57:49.292728",
+  "module": "khetangroup",
+  "name": "Material Issue Unit-1",
+  "prepared_report": 0,
+  "query": "select\n\nse.posting_date as \"Posting Date\",\n    se.shift_type as 'Shift Type',\n\t\n    se_item.item_name as \"Item Name:Link/Item:120\",\n    se_item.qty as \"Qty:Float:100\",\n    se_item.employee_id as \"Employee Id\",\n    se_item.purpose as \"Purpose\",\n    se_item.department as \"Department\"\nfrom\n\t`tabStock Entry` se, `tabStock Entry Detail` se_item\n\nwhere\n\tse.name = se_item.parent \n\tand\n\tse.docstatus = 1\n\tand\n    se.stock_entry_type = \"Material Issue\"\n    and \n    se.company = \"SANTOSH UNIT 1\"\nAND\n(\n       DATE(se.posting_date) between %(from_date) s\n       and %(to_date) s\n   )\n\n     \nORDER BY se.posting_date DESC\n\n",
+  "ref_doctype": "Stock Entry",
+  "reference_report": null,
+  "report_name": "Material Issue Unit-1",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Material Issue Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Material Issue Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Material Issue Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Material Issue Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing Manager"
+   },
+   {
+    "parent": "Material Issue Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [
+   {
+    "fieldname": "se.posting_date",
+    "fieldtype": "Date",
+    "label": " Date",
+    "options": null,
+    "parent": "Material Receipt Unit-1",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "t_warehouse",
+    "fieldtype": "Data",
+    "label": "Warehouse",
+    "options": null,
+    "parent": "Material Receipt Unit-1",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 200
+   },
+   {
+    "fieldname": "se_item.item_name",
+    "fieldtype": "Link",
+    "label": "Item Name",
+    "options": "Item",
+    "parent": "Material Receipt Unit-1",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 150
+   },
+   {
+    "fieldname": "se_item.qty",
+    "fieldtype": "Data",
+    "label": "Qty",
+    "options": null,
+    "parent": "Material Receipt Unit-1",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 100
+   },
+   {
+    "fieldname": "se_item.employee_id",
+    "fieldtype": "Link",
+    "label": "Employee Id",
+    "options": "Employee",
+    "parent": "Material Receipt Unit-1",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 150
+   }
+  ],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Material Receipt Unit-1",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Material Receipt Unit-1",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "",
+  "modified": "2023-09-18 14:57:49.315681",
+  "module": "khetangroup",
+  "name": "Material Receipt Unit-1",
+  "prepared_report": 0,
+  "query": "select\n    \n\tse.posting_date as \"Posting Date\",\n\tse_item.t_warehouse as \"Warehouse\",\n    se_item.item_code as \"Item Name:Link/Item:120\",\n    se_item.qty as \"Qty:Float:100\",\n    se_item.employee_id as \"Employee Id\"\nfrom\n\t`tabStock Entry` se, `tabStock Entry Detail` se_item\n\nwhere\n\tse.name = se_item.parent \n\tand\n    se.stock_entry_type = \"Material Receipt\"\n    and\n    se.company = \"SANTOSH UNIT 1\"\nAND\n(\n       DATE(se.posting_date) between %(from_date) s\n       and %(to_date) s\n   )\n\nORDER BY se.posting_date DESC\n\n     \n\n\n  \n     \n\n",
+  "ref_doctype": "Stock Entry",
+  "reference_report": null,
+  "report_name": "Material Receipt Unit-1",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Material Receipt Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Material Receipt Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Material Receipt Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Material Receipt Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing Manager"
+   },
+   {
+    "parent": "Material Receipt Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 1,
+  "columns": [
+   {
+    "fieldname": "p.posting_date",
+    "fieldtype": "Date",
+    "label": "Date",
+    "options": null,
+    "parent": "Operator Wise Material Tracking Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "operator.machine",
+    "fieldtype": "Data",
+    "label": "Issue Machine Name",
+    "options": null,
+    "parent": "Operator Wise Material Tracking Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "p.operator_name",
+    "fieldtype": "Data",
+    "label": "Operator Name",
+    "options": null,
+    "parent": "Operator Wise Material Tracking Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "operator.item_name",
+    "fieldtype": "Data",
+    "label": "Material Issue Item Name",
+    "options": null,
+    "parent": "Operator Wise Material Tracking Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "operator.qty",
+    "fieldtype": "Data",
+    "label": "Material Issue Qty",
+    "options": null,
+    "parent": "Operator Wise Material Tracking Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "operator.basic_rate",
+    "fieldtype": "Data",
+    "label": "Issue Rate",
+    "options": null,
+    "parent": "Operator Wise Material Tracking Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "p.machine",
+    "fieldtype": "Data",
+    "label": "Machine Name",
+    "options": null,
+    "parent": "Operator Wise Material Tracking Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "finish.item_name",
+    "fieldtype": "Data",
+    "label": "Finished Item Name",
+    "options": null,
+    "parent": "Operator Wise Material Tracking Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "finish.qty",
+    "fieldtype": "Data",
+    "label": "Finish Qty",
+    "options": null,
+    "parent": "Operator Wise Material Tracking Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "finish.basic_rate",
+    "fieldtype": "Data",
+    "label": "Finished Rate",
+    "options": null,
+    "parent": "Operator Wise Material Tracking Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "scrap.qty",
+    "fieldtype": "Data",
+    "label": "Scrap Qty",
+    "options": null,
+    "parent": "Operator Wise Material Tracking Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "reject.qty",
+    "fieldtype": "Data",
+    "label": "Reject Qty",
+    "options": null,
+    "parent": "Operator Wise Material Tracking Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "straightner.qty",
+    "fieldtype": "Data",
+    "label": "Straightner Qty",
+    "options": null,
+    "parent": "Operator Wise Material Tracking Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "short_length.qty",
+    "fieldtype": "Data",
+    "label": "Short Length Qty ",
+    "options": null,
+    "parent": "Operator Wise Material Tracking Unit-2",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   }
+  ],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Operator Wise Material Tracking Unit-2",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Operator Wise Material Tracking Unit-2",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": null,
+    "fieldname": "p.operator",
+    "fieldtype": "Link",
+    "label": "Operator Name",
+    "mandatory": 1,
+    "options": "Employee",
+    "parent": "Operator Wise Material Tracking Unit-2",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-09-18 14:57:49.178266",
+  "module": "khetangroup",
+  "name": "Operator Wise Material Tracking Unit-2",
+  "prepared_report": 0,
+  "query": "with finish as( Select fq.qty, \nfq.item_name, fq.basic_rate, fq.parent from \n`tabStock Entry` fp  left outer join `tabStock Entry Detail` fq on fq.parent = fp.name\nwhere fq.is_finished__item = 1 AND fp.stock_entry_type = \"Manufacturing Unit-2 \"), \nscrap as(Select sq.qty,sq.parent from `tabStock Entry` sp \nleft outer join `tabStock Entry Detail` sq on sq.parent = sp.name \nwhere sq.is_scrap_item= 1 AND sp.stock_entry_type = \"Manufacturing Unit-2\"),\nreject as(Select rq.qty,rq.parent from `tabStock Entry` rp\n left outer join `tabStock Entry Detail` rq on rq.parent = rp.name \nwhere rq.rejected_item = 1 AND rp.stock_entry_type = \"Manufacturing Unit-2\"),\noperator as(select op.operator_name, op.item_name, op.qty, op.machine, op.basic_rate from\n`tabStock Entry` left outer join `tabStock Entry Detail` as op on  `tabStock Entry`.name = op.parent\nwhere `tabStock Entry`.stock_entry_type ='Material Issue'),\nstraightner as(Select sq.qty,sq.parent from `tabStock Entry` sp \nleft outer join `tabStock Entry Detail` sq on sq.parent = sp.name \nwhere sq.straightner= 1 AND sp.stock_entry_type = \"Manufacturing Unit-2\"),\nshort_length as(Select sq.qty,sq.parent from `tabStock Entry` sp \nleft outer join `tabStock Entry Detail` sq on sq.parent = sp.name \nwhere sq.short_length= 1 AND sp.stock_entry_type = \"Manufacturing Unit-2\")\n\n\nSelect DISTINCT\np.posting_date as \" Date\",\noperator.machine as \"Issue Machine Name\",\np.operator_name as \"Operator Name\",\noperator.item_name as \"Material Issue Item Name\",\noperator.qty as \"Material Issue Qty\",\noperator.basic_rate as \"Issue Rate\",\np.machine as \"Machine Name\",\n finish.item_name as \"Finished Item\",\nIFNULL(finish.qty, 0) as \"Finished Qty\",\nIFNULL(finish.basic_rate, 0) as \"Finished Rate\",\nIFNULL(scrap.qty,0) as \"Scrap Qty\",\nIFNULL(reject.qty, 0) as \"Reject Qty\",\nIFNULL(straightner.qty,0) as \"Straightner Qty\",\nIFNULL(short_length.qty, 0) as \"Short Length Qty\"\n \n\nfrom \noperator,\n`tabStock Entry` p left outer join `tabStock Entry Detail` q on q.parent = p.name \nleft outer join finish on finish.parent=p.name \nleft outer join scrap on scrap.parent=p.name \nleft outer join reject on reject.parent=p.name\nleft outer join straightner on straightner.parent = p.name\nleft outer join short_length on short_length.parent = p.name\nwhere  q.s_warehouse IS NOT NULL AND p.stock_entry_type = \"Manufacturing Unit-2\"\nand p.docstatus = 1 \n\nand\np.operator = operator.operator_name\n\nAND\n(\n       DATE(p.posting_date) between %(from_date) s\n       and %(to_date) s\n   )\nand p.`operator` = %(p.operator)s\n\n\n ORDER BY p.`posting_date` DESC\n",
+  "ref_doctype": "Stock Entry",
+  "reference_report": null,
+  "report_name": "Operator Wise Material Tracking Unit-2",
+  "report_script": "",
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Operator Wise Material Tracking Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Operator Wise Material Tracking Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Operator Wise Material Tracking Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Operator Wise Material Tracking Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing Manager"
+   },
+   {
+    "parent": "Operator Wise Material Tracking Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Attendance Comparision Report",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Attendance Comparision Report",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "",
+  "modified": "2023-09-18 14:57:49.353760",
+  "module": "khetangroup",
+  "name": "Attendance Comparision Report",
+  "prepared_report": 0,
+  "query": "SELECT DISTINCT\r    at.attendance_date AS \"Attendance Date\",\r    at.employee AS \"Employee Id\",\r    at.employee_name AS \"Employee Name\",\r    at.status AS \"Status\",\r    at.new_hours AS \"Working Hours\",\r    NULL AS \"Card Status\",\r    card.card_working_hours AS \"Card Working Hours\",\r    NULL AS \"Hour Difference\"\r    \rFROM\r    `tabAttendance` AS at\rLEFT JOIN\r    `tabCard Attendance` AS card\rON\r    at.employee_name = card.employee_name\r    AND at.attendance_date = card.attendance_date\r    AND at.company = card.company\rWHERE\r    at.company = \"SANTOSH UNIT 2\"\r    AND card.name IS NULL\r    AND DATE(at.attendance_date) BETWEEN %(from_date)s AND %(to_date)s\r\rUNION\r\rSELECT DISTINCT\r    card.attendance_date AS \"Attendance Date\",\r    card.employee AS \"Employee Id\",\r    card.employee_name AS \"Employee Name\",\r    NULL AS \"Status\",\r    NULL AS \"Working Hours\",\r    card.card_status AS \"Card Status\",\r    card.card_working_hours AS \"Card Working Hours\",\r    NULL AS \"Hour Difference\"\r    \rFROM\r    `tabAttendance` AS at\rRIGHT JOIN\r    `tabCard Attendance` AS card\rON\r    at.employee_name = card.employee_name\r    AND at.attendance_date = card.attendance_date\r    AND at.company = card.company\rWHERE\r    at.company IS NULL\r    AND DATE(card.attendance_date) BETWEEN %(from_date)s AND %(to_date)s\r\rUNION\r\rSELECT DISTINCT\r    at.attendance_date AS \"Attendance Date\",\r    at.employee AS \"Employee Id\",\r    at.employee_name AS \"Employee Name\",\r    at.status AS \"Status\",\r    at.new_hours AS \"Working Hours\",\r    card.card_status AS \"Card Status\",\r    card.card_working_hours AS \"Card Working Hours\",\r    ROUND((card.card_working_hours - at.new_hours),2) AS \"Hour Difference\"\r    \rFROM\r    `tabAttendance` AS at\rINNER JOIN\r    `tabCard Attendance` AS card\rON\r    at.employee_name = card.employee_name\r    AND at.attendance_date = card.attendance_date\r    AND at.company = card.company\rWHERE\r    at.company = \"SANTOSH UNIT 2\"\r    AND DATE(at.attendance_date) BETWEEN %(from_date)s AND %(to_date)s\rORDER BY\r    \"Attendance Date\" DESC;\r",
+  "ref_doctype": "Attendance",
+  "reference_report": null,
+  "report_name": "Attendance Comparision Report",
+  "report_script": "",
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Attendance Comparision Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Attendance Comparision Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   },
+   {
+    "parent": "Attendance Comparision Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Material Transfer For Supplier",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Material Transfer For Supplier",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-09-18 14:57:49.091850",
+  "module": "khetangroup",
+  "name": "Material Transfer For Supplier",
+  "prepared_report": 0,
+  "query": "WITH voucher AS(\r    SELECT\r       `tabStock Entry`.name,\r        `tabStock Entry`.voucher_no,\r        `tabStock Entry`.returnable_or_non_returnable,\r        `tabStock Entry`.received_qty,\r         vd.qty,\r         vd.pending_qty_material_received,\r         `tabStock Entry`.posting_date\r        \r    from\r        `tabStock Entry`\r        inner join `tabStock Entry Detail` as vd on  `tabStock Entry`.name = vd.parent\r    where\r        stock_entry_type ='Material Received for Supplier'\r        \r)\rselect\r    se.stock_entry_type as 'Stock Entry Type',\r    se.party_name_ as 'Party Name',\r    se.name as 'Voucher No:Link/Stock Entry',\r    se.posting_date as 'Material Transfer Date',\r    se.returnable_or_non_returnable as 'Returnable Or Non Returnable',\r    sed.item_code as 'Item Name',\r    voucher.received_qty as 'In Qty',\r    voucher.qty as 'Out Qty',\r    voucher.pending_qty_material_received as 'Balance Qty',\r    voucher.name as 'Material Received For Supplier:Link/Stock Entry',\r    voucher.posting_date as 'Material Received Date'\r    \r  \rfrom\r    voucher,\r    `tabStock Entry` se\r    join `tabStock Entry Detail` sed\ron sed.parent=se.name\rwhere\r    se.stock_entry_type = 'Material Transfer for Supplier'\r    and voucher.voucher_no = se.name\r      \r    and (\r       DATE(se.posting_date) between %(from_date) s\r       and %(to_date) s\r   )\runion\rselect\r    se.stock_entry_type,\r    se.party_name_,\r    se.name as 'Voucher No:Link/Stock Entry',\r    se.posting_date as 'Material Transfer Date',\r    se.returnable_or_non_returnable,\r    sed.item_code as 'Item Name',\r    null,\r    null,\r    null,\r    null,\r    null\r   \r    \rfrom\r    voucher,\r    `tabStock Entry` se\r    join `tabStock Entry Detail` sed\ron sed.parent=se.name\rwhere\r    se.stock_entry_type =  'Material Transfer for Supplier'\r    and se.returnable_or_non_returnable = 'Returnable'\r    and se.docstatus = 1\r    and voucher.voucher_no != se.name\r    \r     and (\r       DATE(se.posting_date) between %(from_date) s\r       and %(to_date) s\r   )\runion\rselect\r    se.stock_entry_type,\r    se.party_name_,\r    se.name,\r    se.posting_date as 'Material Transfer Date',\r    se.returnable_or_non_returnable,\r    sed.item_code as 'Item Code',\r    null,\r    null,\r    null,\r    null,\r    null\r   \rfrom\r    voucher,\r    `tabStock Entry` se\r    join `tabStock Entry Detail` sed\ron sed.parent=se.name\rwhere\r    se.name in(\r        select\r            name\r        from\r            `tabStock Entry`\r        where\r            returnable_or_non_returnable = 'Non Returnable'\r            \r            and (\r       DATE(se.posting_date) between %(from_date) s\r       and %(to_date) s\r   )\r    )\r    and se.docstatus = 1\r   ",
+  "ref_doctype": "Stock Entry",
+  "reference_report": null,
+  "report_name": "Material Transfer For Supplier",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Material Transfer For Supplier",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Material Transfer For Supplier",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Material Transfer For Supplier",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing Manager"
+   },
+   {
+    "parent": "Material Transfer For Supplier",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Subcontracting Received Material",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Subcontracting Received Material",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-09-18 14:57:49.070112",
+  "module": "khetangroup",
+  "name": "Subcontracting Received Material",
+  "prepared_report": 0,
+  "query": "WITH delivery AS(\r    SELECT\r     `tabDelivery Note`.name,\r     `tabDelivery Note`.posting_date,\r     `tabDelivery Note`.customer,\r      `tabDelivery Note`.total_qty,\r       vd.item_name\r   from\r        `tabDelivery Note`\r        left outer  join `tabDelivery Note Item` as vd on `tabDelivery Note`.name = vd.parent\r    \r)\rselect \r    se.stock_entry_type as 'Stock Entry Type',\r    se.party,\r    delivery.name as 'Delivery Note:Link/Delivery Note',\r    delivery.item_name as 'Transfer Material',\r    delivery.total_qty as'Out Qty',\r    sed.item_name as 'Received Material',\r    sed.qty as 'In Qty',\r    sed.pending_qty as 'Balance Qty',\r    se.name as 'Stock Entry :Link/Stock Entry',\r    se.posting_date as 'Date'\r \r    \r    \r  \rfrom\r    delivery,\r    `tabStock Entry` se\r    left outer join `tabStock Entry Detail` sed\r    on sed.parent=se.name\rwhere\rse.stock_entry_type=\"Subcontracting Received Material\"\rand\r    se.docstatus =1\r    \r     \r     and (\r       DATE(se.posting_date) between %(from_date) s\r       and %(to_date) s\r   )\r    and delivery.name = se.delivery_note\r GROUP BY sed.item_name\r   ",
+  "ref_doctype": "Stock Entry",
+  "reference_report": null,
+  "report_name": "Subcontracting Received Material",
+  "report_script": "",
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Subcontracting Received Material",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Subcontracting Received Material",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Subcontracting Received Material",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing Manager"
+   },
+   {
+    "parent": "Subcontracting Received Material",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-09-18 15:07:41.408490",
+  "module": "khetangroup",
+  "name": "Negative Stock Report",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Stock Ledger Entry",
+  "reference_report": null,
+  "report_name": "Negative Stock Report",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Negative Stock Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Negative Stock Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": "Khetan Logo",
+  "modified": "2023-09-18 14:59:53.005151",
+  "module": "khetangroup",
+  "name": "Operator Wise Tracking Report Unit-2",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Stock Entry",
+  "reference_report": null,
+  "report_name": "Operator Wise Tracking Report Unit-2",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Operator Wise Tracking Report Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Operator Wise Tracking Report Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Operator Wise Tracking Report Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Operator Wise Tracking Report Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing Manager"
+   },
+   {
+    "parent": "Operator Wise Tracking Report Unit-2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": "Khetan Logo",
+  "modified": "2023-09-18 14:59:53.023007",
+  "module": "khetangroup",
+  "name": "Subcontracting Received Material Unit-1",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Stock Entry",
+  "reference_report": null,
+  "report_name": "Subcontracting Received Material Unit-1",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Subcontracting Received Material Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Subcontracting Received Material Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Subcontracting Received Material Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Subcontracting Received Material Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing Manager"
+   },
+   {
+    "parent": "Subcontracting Received Material Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": "Khetan Logo",
+  "modified": "2023-09-18 14:59:53.042394",
+  "module": "khetangroup",
+  "name": "Daily Production Unit - 2",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Stock Entry",
+  "reference_report": null,
+  "report_name": "Daily Production Unit - 2",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Daily Production Unit - 2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Daily Production Unit - 2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Daily Production Unit - 2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Daily Production Unit - 2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing Manager"
+   },
+   {
+    "parent": "Daily Production Unit - 2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": "Khetan Logo",
+  "modified": "2023-09-18 14:59:53.064017",
+  "module": "khetangroup",
+  "name": "Daily Production Unit-1",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Stock Entry",
+  "reference_report": null,
+  "report_name": "Daily Production Unit-1",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Daily Production Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Daily Production Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Daily Production Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Daily Production Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing Manager"
+   },
+   {
+    "parent": "Daily Production Unit-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": "Khetan Logo",
+  "modified": "2023-09-18 14:59:53.081983",
+  "module": "khetangroup",
+  "name": "Operator wise tracking report",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Stock Entry",
+  "reference_report": null,
+  "report_name": "Operator wise tracking report",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Operator wise tracking report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Operator wise tracking report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Operator wise tracking report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Operator wise tracking report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing Manager"
+   },
+   {
+    "parent": "Operator wise tracking report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Party Wise Sales Analytics",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Party Wise Sales Analytics",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": null,
+    "fieldname": "se.customer",
+    "fieldtype": "Link",
+    "label": "Party Name",
+    "mandatory": 1,
+    "options": "Customer",
+    "parent": "Party Wise Sales Analytics",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "",
+  "modified": "2023-09-18 14:57:49.396772",
+  "module": "khetangroup",
+  "name": "Party Wise Sales Analytics",
+  "prepared_report": 0,
+  "query": "select \nse.customer_name as \"customer Name\",\nsed.item_code as \"Item Code\",\nSUM(sed.qty) as \"Total Qty\",\nCOUNT(se.name) as \"Total Transaction\"\nfrom `tabSales Order` se join `tabSales Order Item` sed on se.name = sed.parent\nwhere\n (\n       DATE(se.transaction_date) between %(from_date) s\n       and %(to_date) s\n   )\n\n and se.customer = %(se.customer)s\nGROUP BY se.customer_name, sed.item_code",
+  "ref_doctype": "Sales Order",
+  "reference_report": null,
+  "report_name": "Party Wise Sales Analytics",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Party Wise Sales Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales Manager"
+   },
+   {
+    "parent": "Party Wise Sales Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales User"
+   },
+   {
+    "parent": "Party Wise Sales Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Party Wise Sales Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Party Wise Sales Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Maintenance User"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": null,
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Quotation Order Report",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": null,
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Quotation Order Report",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-09-18 14:57:49.013824",
+  "module": "khetangroup",
+  "name": "Quotation Order Report",
+  "prepared_report": 0,
+  "query": "SELECT \n    qtc.item_code AS \"Item Code\",\n    qtc.item_name AS \"Item Name\",\n    sum(qtc.qty) AS \"Quotation Qty\",\n    sum(slt.qty) AS \"Sales Order Qty\",\n    (sum(sit.qty)) AS \"Out Qty\",\n    (sum(slt.qty) - COALESCE(sum(sit.qty), 0)) AS \"Invoice Pending Qty\",\n    COALESCE(bn_actual_qty_sum, 0) AS 'Actual Qty'\nFROM `tabQuotation` qt\nJOIN `tabQuotation Item` qtc ON qt.name = qtc.parent\nLEFT OUTER JOIN `tabSales Order Item` slt ON qtc.item_code = slt.item_code AND qt.name = slt.prevdoc_docname\nLEFT OUTER JOIN `tabSales Invoice Item` sit ON slt.item_code = sit.item_code \nLEFT OUTER JOIN (\n    SELECT item_code, SUM(CASE WHEN actual_qty > 0 THEN actual_qty ELSE 0 END) AS bn_actual_qty_sum\n    FROM `tabBin`\n    GROUP BY item_code\n) bn ON qtc.item_code = bn.item_code \nWHERE\n    DATE(qt.transaction_date) BETWEEN %(from_date)s AND %(to_date)s\n    AND qt.company = \"Khetan Udyog\"\nGROUP BY  qtc.item_code, qtc.item_name, bn_actual_qty_sum;\n",
+  "ref_doctype": "Quotation",
+  "reference_report": null,
+  "report_name": "Quotation Order Report",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Quotation Order Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales Manager"
+   },
+   {
+    "parent": "Quotation Order Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales User"
+   },
+   {
+    "parent": "Quotation Order Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Maintenance User"
+   },
+   {
+    "parent": "Quotation Order Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Maintenance Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "",
+  "modified": "2023-09-18 14:57:49.151482",
+  "module": "khetangroup",
+  "name": "bin",
+  "prepared_report": 0,
+  "query": "select\n    item.item_code as \"Item Code\",\n    sum((CASE WHEN  bn.actual_qty > 0 THEN bn.actual_qty ELSE 0 END)) AS 'Actual Qty'\nfrom\n `tabItem` item \njoin `tabBin` bn on bn.item_code = item.item_code",
+  "ref_doctype": "Item",
+  "reference_report": null,
+  "report_name": "bin",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "bin",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "All"
+   },
+   {
+    "parent": "bin",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "bin",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Maintenance User"
+   },
+   {
+    "parent": "bin",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "bin",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "bin",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "bin",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales User"
+   },
+   {
+    "parent": "bin",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Item Manager"
+   },
+   {
+    "parent": "bin",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   }
+  ]
+ }
+]

@@ -215,3 +215,43 @@ app_license = "MIT"
 # auth_hooks = [
 #	"khetangroup.auth.validate"
 # ]
+
+fixtures =[
+    "Property Setter",
+     
+            {"dt":"Client Script","filters":[
+        [
+            "module","in",[
+               "khetangroup"
+            ]
+        ]
+    ]},
+            {"dt":"Server Script","filters":[
+        [
+            "module","in",[
+               "khetangroup"
+            ]
+        ]
+    ]},
+             {"dt":"Custom Field","filters":[
+        [
+            "module","in",[
+               "khetangroup"
+            ]
+        ]
+    ]},
+              {"dt":"Print Format","filters":[
+        [
+            "module","in",[
+               "khetangroup"
+            ]
+        ]
+    ]},
+               {"dt":"Report","filters":[
+        [
+            "module","in",[
+               "khetangroup"
+            ]
+        ]
+    ]},
+]

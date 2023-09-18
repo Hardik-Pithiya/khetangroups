@@ -1,0 +1,111 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:name1",
+ "creation": "2023-09-18 11:44:57.950567",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "name1",
+  "master_price",
+  "section_break_2x7g4",
+  "pipe",
+  "sheets",
+  "bluaster",
+  "pillar",
+  "column_break_guctm",
+  "202",
+  "304",
+  "316"
+ ],
+ "fields": [
+  {
+   "fieldname": "name1",
+   "fieldtype": "Data",
+   "label": "Name ",
+   "unique": 1
+  },
+  {
+   "fieldname": "master_price",
+   "fieldtype": "Float",
+   "label": "Master Price"
+  },
+  {
+   "fieldname": "section_break_2x7g4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "pipe",
+   "fieldtype": "Check",
+   "label": "Pipe"
+  },
+  {
+   "default": "0",
+   "fieldname": "sheets",
+   "fieldtype": "Check",
+   "label": "Sheet"
+  },
+  {
+   "default": "0",
+   "fieldname": "bluaster",
+   "fieldtype": "Check",
+   "label": "Bluaster"
+  },
+  {
+   "default": "0",
+   "fieldname": "pillar",
+   "fieldtype": "Check",
+   "label": "Pillar"
+  },
+  {
+   "fieldname": "column_break_guctm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "202",
+   "fieldtype": "Check",
+   "label": "202"
+  },
+  {
+   "default": "0",
+   "fieldname": "304",
+   "fieldtype": "Check",
+   "label": "304"
+  },
+  {
+   "default": "0",
+   "fieldname": "316",
+   "fieldtype": "Check",
+   "label": "316"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-09-18 15:00:47.759291",
+ "modified_by": "Administrator",
+ "module": "khetangroup",
+ "name": "Item Type",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

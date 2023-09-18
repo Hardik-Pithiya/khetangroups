@@ -1,0 +1,109 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-09-18 11:44:58.597929",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "employee_name",
+  "total_hours",
+  "daily_rate",
+  "standard_hours",
+  "payment",
+  "advance",
+  "advance_details",
+  "pending_payment",
+  "total_payment",
+  "present_days",
+  "absent_days",
+  "attendance_details"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name"
+  },
+  {
+   "fieldname": "total_hours",
+   "fieldtype": "Float",
+   "label": "Total Hours"
+  },
+  {
+   "fetch_from": "employee.daily_rate",
+   "fieldname": "daily_rate",
+   "fieldtype": "Data",
+   "label": "Daily Rate"
+  },
+  {
+   "default": "12",
+   "fieldname": "standard_hours",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Standard Hours"
+  },
+  {
+   "fieldname": "payment",
+   "fieldtype": "Data",
+   "label": "Payment"
+  },
+  {
+   "fieldname": "advance",
+   "fieldtype": "Data",
+   "label": "Advance"
+  },
+  {
+   "depends_on": "eval:doc.advance!=''",
+   "fieldname": "advance_details",
+   "fieldtype": "Long Text",
+   "label": "Advance Details"
+  },
+  {
+   "fieldname": "pending_payment",
+   "fieldtype": "Data",
+   "label": "Pending Payment"
+  },
+  {
+   "fieldname": "total_payment",
+   "fieldtype": "Data",
+   "label": "Total Payment"
+  },
+  {
+   "fieldname": "present_days",
+   "fieldtype": "Data",
+   "label": "Present Days"
+  },
+  {
+   "fieldname": "absent_days",
+   "fieldtype": "Data",
+   "label": "Absent Days"
+  },
+  {
+   "fieldname": "attendance_details",
+   "fieldtype": "Long Text",
+   "label": "Attendance Details"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-09-18 15:00:48.789843",
+ "modified_by": "Administrator",
+ "module": "khetangroup",
+ "name": "Bulk Employee Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
