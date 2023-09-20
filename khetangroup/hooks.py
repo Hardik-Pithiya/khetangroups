@@ -233,13 +233,6 @@ fixtures =[
             ]
         ]
     ]},
-             {"dt":"Custom Field","filters":[
-        [
-            "module","in",[
-               "khetangroup"
-            ]
-        ]
-    ]},
               {"dt":"Print Format","filters":[
         [
             "module","in",[
