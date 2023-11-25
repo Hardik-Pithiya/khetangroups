@@ -112,7 +112,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": "Today",
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -124,7 +123,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": "Today",
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To Date",
@@ -328,7 +326,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": "Today",
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -340,7 +337,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": "Today",
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To Date",
@@ -469,7 +465,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": "Today",
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -481,7 +476,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": "Today",
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To Date",
@@ -600,7 +594,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": "Today",
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -612,7 +605,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": "Today",
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To date",
@@ -801,7 +793,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": "Today",
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -813,7 +804,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": "Today",
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To Date",
@@ -952,7 +942,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": "Today",
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -964,7 +953,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": "Today",
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To Date",
@@ -1083,7 +1071,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": "Today",
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -1095,7 +1082,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": "Today",
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To date",
@@ -1304,7 +1290,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": "Today",
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -1316,7 +1301,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": "Today",
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To Date",
@@ -1328,7 +1312,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": null,
     "fieldname": "p.operator",
     "fieldtype": "Link",
     "label": "Operator Name",
@@ -1396,7 +1379,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": "Today",
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -1408,7 +1390,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": "Today",
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To Date",
@@ -1464,7 +1445,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": "Today",
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -1476,7 +1456,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": "Today",
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To Date",
@@ -1538,7 +1517,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": "Today",
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -1550,7 +1528,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": "Today",
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To Date",
@@ -1924,7 +1901,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": "Today",
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -1936,7 +1912,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": "Today",
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To Date",
@@ -1948,7 +1923,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": null,
     "fieldname": "se.customer",
     "fieldtype": "Link",
     "label": "Party Name",
@@ -2016,7 +1990,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": null,
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -2028,7 +2001,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": null,
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To Date",
