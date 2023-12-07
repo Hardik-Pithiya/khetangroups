@@ -11,7 +11,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-09-18 14:57:49.113552",
+  "modified": "2023-11-25 12:46:33.226761",
   "module": "khetangroup",
   "name": "Item-wise sales party list",
   "prepared_report": 0,
@@ -112,7 +112,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": "Today",
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -124,7 +123,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": "Today",
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To Date",
@@ -140,7 +138,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-09-18 14:57:49.372911",
+  "modified": "2023-11-25 12:46:33.021229",
   "module": "khetangroup",
   "name": "Material Transfer Unit-1",
   "prepared_report": 0,
@@ -195,7 +193,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Khetan Logo",
-  "modified": "2023-09-18 14:59:52.806657",
+  "modified": "2023-11-25 12:46:32.969524",
   "module": "khetangroup",
   "name": "Operation Wise Production Report",
   "prepared_report": 0,
@@ -328,7 +326,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": "Today",
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -340,7 +337,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": "Today",
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To Date",
@@ -356,7 +352,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-09-18 14:57:49.266982",
+  "modified": "2023-11-25 12:46:33.124882",
   "module": "khetangroup",
   "name": "Material Issue Unit-2",
   "prepared_report": 0,
@@ -469,7 +465,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": "Today",
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -481,7 +476,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": "Today",
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To Date",
@@ -497,7 +491,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-09-18 14:57:49.334421",
+  "modified": "2023-11-25 12:46:33.060497",
   "module": "khetangroup",
   "name": "Material Transfer Unit-2",
   "prepared_report": 0,
@@ -600,7 +594,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": "Today",
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -612,7 +605,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": "Today",
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To date",
@@ -628,7 +620,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-09-18 14:57:49.209595",
+  "modified": "2023-11-25 12:46:33.168896",
   "module": "khetangroup",
   "name": "Material Receipt Unit-2",
   "prepared_report": 0,
@@ -801,7 +793,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": "Today",
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -813,7 +804,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": "Today",
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To Date",
@@ -829,7 +819,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-09-18 14:57:49.235483",
+  "modified": "2023-11-25 12:46:33.145760",
   "module": "khetangroup",
   "name": "Daily Production Report Unit-2",
   "prepared_report": 0,
@@ -952,7 +942,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": "Today",
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -964,7 +953,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": "Today",
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To Date",
@@ -980,7 +968,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-09-18 14:57:49.292728",
+  "modified": "2023-11-25 12:46:33.102571",
   "module": "khetangroup",
   "name": "Material Issue Unit-1",
   "prepared_report": 0,
@@ -1083,7 +1071,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": "Today",
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -1095,7 +1082,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": "Today",
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To date",
@@ -1111,7 +1097,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-09-18 14:57:49.315681",
+  "modified": "2023-11-25 12:46:33.081273",
   "module": "khetangroup",
   "name": "Material Receipt Unit-1",
   "prepared_report": 0,
@@ -1304,7 +1290,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": "Today",
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -1316,7 +1301,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": "Today",
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To Date",
@@ -1328,7 +1312,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": null,
     "fieldname": "p.operator",
     "fieldtype": "Link",
     "label": "Operator Name",
@@ -1344,7 +1327,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-09-18 14:57:49.178266",
+  "modified": "2023-11-25 12:46:33.189069",
   "module": "khetangroup",
   "name": "Operator Wise Material Tracking Unit-2",
   "prepared_report": 0,
@@ -1396,7 +1379,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": "Today",
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -1408,7 +1390,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": "Today",
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To Date",
@@ -1424,7 +1405,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-09-18 14:57:49.353760",
+  "modified": "2023-11-25 12:46:33.041749",
   "module": "khetangroup",
   "name": "Attendance Comparision Report",
   "prepared_report": 0,
@@ -1464,7 +1445,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": "Today",
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -1476,7 +1456,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": "Today",
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To Date",
@@ -1492,7 +1471,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-09-18 14:57:49.091850",
+  "modified": "2023-11-25 12:46:33.249564",
   "module": "khetangroup",
   "name": "Material Transfer For Supplier",
   "prepared_report": 0,
@@ -1538,7 +1517,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": "Today",
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -1550,7 +1528,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": "Today",
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To Date",
@@ -1566,7 +1543,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-09-18 14:57:49.070112",
+  "modified": "2023-11-25 12:46:33.267355",
   "module": "khetangroup",
   "name": "Subcontracting Received Material",
   "prepared_report": 0,
@@ -1615,7 +1592,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-09-18 15:07:41.408490",
+  "modified": "2023-11-25 12:46:32.816688",
   "module": "khetangroup",
   "name": "Negative Stock Report",
   "prepared_report": 0,
@@ -1652,7 +1629,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Khetan Logo",
-  "modified": "2023-09-18 14:59:53.005151",
+  "modified": "2023-11-25 12:46:32.941682",
   "module": "khetangroup",
   "name": "Operator Wise Tracking Report Unit-2",
   "prepared_report": 0,
@@ -1707,7 +1684,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Khetan Logo",
-  "modified": "2023-09-18 14:59:53.023007",
+  "modified": "2023-11-25 12:46:32.916388",
   "module": "khetangroup",
   "name": "Subcontracting Received Material Unit-1",
   "prepared_report": 0,
@@ -1762,7 +1739,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Khetan Logo",
-  "modified": "2023-09-18 14:59:53.042394",
+  "modified": "2023-11-25 12:46:32.889656",
   "module": "khetangroup",
   "name": "Daily Production Unit - 2",
   "prepared_report": 0,
@@ -1817,7 +1794,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Khetan Logo",
-  "modified": "2023-09-18 14:59:53.064017",
+  "modified": "2023-11-25 12:46:32.863698",
   "module": "khetangroup",
   "name": "Daily Production Unit-1",
   "prepared_report": 0,
@@ -1872,7 +1849,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Khetan Logo",
-  "modified": "2023-09-18 14:59:53.081983",
+  "modified": "2023-11-25 12:46:32.839238",
   "module": "khetangroup",
   "name": "Operator wise tracking report",
   "prepared_report": 0,
@@ -1924,7 +1901,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": "Today",
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -1936,7 +1912,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": "Today",
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To Date",
@@ -1948,7 +1923,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": null,
     "fieldname": "se.customer",
     "fieldtype": "Link",
     "label": "Party Name",
@@ -1964,7 +1938,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-09-18 14:57:49.396772",
+  "modified": "2023-11-25 12:46:32.995034",
   "module": "khetangroup",
   "name": "Party Wise Sales Analytics",
   "prepared_report": 0,
@@ -2016,7 +1990,6 @@
   "doctype": "Report",
   "filters": [
    {
-    "default": null,
     "fieldname": "from_date",
     "fieldtype": "Date",
     "label": "From Date",
@@ -2028,7 +2001,6 @@
     "wildcard_filter": 0
    },
    {
-    "default": null,
     "fieldname": "to_date",
     "fieldtype": "Date",
     "label": "To Date",
@@ -2044,7 +2016,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-09-18 14:57:49.013824",
+  "modified": "2023-11-25 12:46:33.283361",
   "module": "khetangroup",
   "name": "Quotation Order Report",
   "prepared_report": 0,
@@ -2093,7 +2065,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-09-18 14:57:49.151482",
+  "modified": "2023-11-25 12:46:33.210640",
   "module": "khetangroup",
   "name": "bin",
   "prepared_report": 0,
@@ -2172,7 +2144,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Khetan Logo",
-  "modified": "2023-10-27 17:25:13.698421",
+  "modified": "2023-11-25 12:46:32.793493",
   "module": "khetangroup",
   "name": "Stock Balance Report",
   "prepared_report": 0,
@@ -2194,6 +2166,126 @@
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "Accounts Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [
+   {
+    "fieldname": "item.item_code",
+    "fieldtype": "Link",
+    "label": "Item Code",
+    "options": "Item",
+    "parent": "Low Stock Balance",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "se.warehouse",
+    "fieldtype": "Link",
+    "label": "Warehouse",
+    "options": "Warehouse",
+    "parent": "Low Stock Balance",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "bin.actual_qty",
+    "fieldtype": "Float",
+    "label": "Qty",
+    "options": null,
+    "parent": "Low Stock Balance",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "se.safety_stock",
+    "fieldtype": "Float",
+    "label": "Safety Qty",
+    "options": null,
+    "parent": "Low Stock Balance",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   }
+  ],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "Khetan Logo",
+  "modified": "2023-11-25 12:46:32.719535",
+  "module": "khetangroup",
+  "name": "Low Stock Balance",
+  "prepared_report": 0,
+  "query": "select  item.item_code, se.warehouse, bin.actual_qty, se.safety_stock from `tabItem` item join `tabSafety Stock` se on item.name = se.parent\n             join `tabBin` bin on item.item_code = bin.item_code\n             where item.disabled = 0\n             and\n             se.warehouse = bin.warehouse\n             and \n             bin.actual_qty < se.safety_stock",
+  "ref_doctype": "Item",
+  "reference_report": null,
+  "report_name": "Low Stock Balance",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Low Stock Balance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Item Manager"
+   },
+   {
+    "parent": "Low Stock Balance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Low Stock Balance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Low Stock Balance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales User"
+   },
+   {
+    "parent": "Low Stock Balance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Low Stock Balance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Maintenance User"
+   },
+   {
+    "parent": "Low Stock Balance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Low Stock Balance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Low Stock Balance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "All"
    }
   ]
  }
