@@ -165,7 +165,7 @@ def get_stock_ledger_name_entries(filters):
 		
 	)
 
-	return query.run(as_dict=True)
+	return query.run(as_dict=True)	
 
 def get_stock_manufacturing_entries(filters):
 	sle = frappe.qb.DocType("Stock Entry")
