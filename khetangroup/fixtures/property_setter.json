@@ -2455,13 +2455,13 @@
   "doctype_or_field": "DocField",
   "field_name": "naming_series",
   "is_system_generated": 1,
-  "modified": "2023-03-31 02:16:55.394859",
-  "module": null,
+  "modified": "2023-12-26 12:14:26.761118",
+  "module": "khetangroup",
   "name": "Sales Invoice-naming_series-options",
   "property": "options",
   "property_type": "Small Text",
   "row_name": null,
-  "value": "SINV-.YY.-\nSRET-.YY.-\n\nACC-SINV-.YYYY.-\nACC-SINV-RET-.YYYY.-"
+  "value": "SINV-.YY.-\nSRET-.YY.-\n\nACC-SINV-.YYYY.-\nACC-SINV-RET-.YYYY.-\nKU/PI/."
  },
  {
   "default_value": null,
