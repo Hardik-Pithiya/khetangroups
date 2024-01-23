@@ -16,6 +16,9 @@
   "mrp",
   "size",
   "color",
+  "section_break_8sllm",
+  "qr_data",
+  "qrcode",
   "amended_from"
  ],
  "fields": [
@@ -74,12 +77,30 @@
    "options": "Qr Code",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "section_break_8sllm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "qrcode",
+   "fieldtype": "Image",
+   "label": "Qrcode",
+   "options": "qr_data"
+  },
+  {
+   "fieldname": "qr_data",
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "label": "Qr Data",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-11-25 12:45:06.820298",
+ "modified": "2024-01-04 16:25:26.458523",
  "modified_by": "Administrator",
  "module": "khetangroup",
  "name": "Qr Code",
