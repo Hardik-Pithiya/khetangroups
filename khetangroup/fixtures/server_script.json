@@ -182,22 +182,6 @@
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
-  "doctype_event": "After Insert",
-  "event_frequency": "All",
-  "modified": "2023-11-25 12:52:03.943683",
-  "module": "khetangroup",
-  "name": "Delete Multiple logs in employee checkin",
-  "reference_doctype": "Employee Checkin",
-  "script": "emp_nm = str(doc.employee_name)\nHour = str(doc.hour)\nMinute = str(doc.minute)\nDate = str(doc.date)\ntime = doc.time\nshift = doc.shift\ncompany = doc.company_unit\n\n# # Update Last sync of checkin time in shift type\nif company=='Unit 1':\n    frappe.db.set_value('Shift Type', shift, 'last_sync_of_checkin', time)\nelif company=='Unit 2':\n    max_datetime = frappe.db.get_value(\"Employee Checkin\", filters={'company':\"Unit 2\"}, fieldname=\"max(time)\")\n    frappe.db.set_value('Shift Type', shift, 'last_sync_of_checkin', max_datetime)\n    \n\n# data = frappe.db.get_value('Shift Type', {'name': shift}, ['name', 'last_sync_of_checkin'],as_dict=1)\n# # frappe.msgprint(str(data.last_sync_of_checkin))\n    \n# frappe.db.set_value('Shift Type', shift, 'last_sync_of_checkin', time)\n\n\n\nif company=='Unit 1':\n    \n    data = frappe.db.get_list('Employee Checkin',\n        filters={\n            'employee_name': emp_nm,\n            'hour': Hour,\n            'minute': Minute,\n            'date': Date\n        },\n        fields=['name', 'hour', 'minute', 'date'],limit=1, as_list=True)\n    \n    for x in data:\n        ans = str(x[0])\n        ans_hour = str(x[1])\n        ans_minute = str(x[2])\n        ans_date = str(x[3])\n        # frappe.msgprint(ans)\n        # frappe.msgprint(str(x))\n        # frappe.msgprint(ans_minute)\n        \n        value = frappe.db.get_list('Employee Checkin', \n                filters=[\n                    ['name', 'NOT IN', ans],\n                    ['employee_name', '=', emp_nm],\n                    ['hour', '=', ans_hour],\n                    ['minute', '=', ans_minute],\n                    ['date', '=', ans_date]\n                ], as_list=True)\n        \n        for d in value:\n            new = str(d[0])\n            # frappe.msgprint(new)\n        \n            frappe.delete_doc('Employee Checkin', new)\n        \n        \n    \n\n",
-  "script_type": "DocType Event"
- },
- {
-  "allow_guest": 0,
-  "api_method": null,
-  "cron_format": null,
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Server Script",
   "doctype_event": "After Submit",
   "event_frequency": "All",
   "modified": "2023-11-25 12:52:03.828366",
@@ -430,5 +414,21 @@
   "reference_doctype": null,
   "script": "item_code = frappe.form_dict[\"item_code\"]\nuom_details = frappe.get_all('UOM Conversion Detail', filters={'parent': item_code, 'conversion_factor': ('!=', 1)}, fields='uom')\n\nfrappe.response[\"uom_details\"] =uom_details",
   "script_type": "API"
+ },
+ {
+  "allow_guest": 0,
+  "api_method": null,
+  "cron_format": null,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "After Submit",
+  "event_frequency": "All",
+  "modified": "2024-01-23 13:27:18.403129",
+  "module": "khetangroup",
+  "name": "Quotation Submit Time Stock Entry Auto Create For Material Transfer",
+  "reference_doctype": "Quotation",
+  "script": "frappe.msgprint(str(doc.name))\nwarehouse_name = frappe.db.get_value(\"Warehouse\", filters={'custom_is_party_warehouse': '1'}, fieldname='name')\nfrappe.msgprint(str(warehouse_name))\n\n# Create a new Stock Entry document\nstock_entry = frappe.get_doc({\n    'doctype': 'Stock Entry',\n    'stock_entry_type': 'Material Transfer',\n    \n    'items': [],\n})\n\n# Add items to the Stock Entry document based on the items in doc\nfor item in doc.items:\n    stock_entry.append('items', {\n        'item_code': item.item_code,\n        'qty': item.qty,\n        't_warehouse': warehouse_name,\n        's_warehouse': item.warehouse\n        # Add other item details as needed\n    })\n\n# Insert the Stock Entry document\nstock_entry.insert()\n\n# Submit the Stock Entry document\nstock_entry.submit()\n",
+  "script_type": "DocType Event"
  }
 ]
