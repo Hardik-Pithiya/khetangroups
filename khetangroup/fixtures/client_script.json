@@ -2,6 +2,28 @@
  {
   "docstatus": 0,
   "doctype": "Client Script",
+  "dt": "Quotation",
+  "enabled": 0,
+  "modified": "2024-01-29 10:11:53.403319",
+  "module": "khetangroup",
+  "name": "Material Return",
+  "script": "\nfrappe.ui.form.on('Quotation', {\n    refresh: function (frm) {\n        var currentDate = frappe.datetime.get_today();\n        var formattedDate = frappe.datetime.str_to_user(currentDate);\n\n       \n\n        if (formattedDate >= cur_frm.doc.valid_till && cur_frm.doc.docstatus == 1) {\n            \t\n            frm.add_custom_button(__('Material Return'), function () {\n               \n                frappe.call({\n                    method:\"quotation_value\",\n                    args:{\n                        \"name\": cur_frm.doc.name,\n                      \n                       \n                    }\n                })\n          \n            \t})\n        }\n    }\n});\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Sales Invoice",
+  "enabled": 0,
+  "modified": "2024-01-24 15:59:53.239993",
+  "module": "khetangroup",
+  "name": "quotation name",
+  "script": "frappe.ui.form.on('Sales Invoice', {\n    after_save: function (frm) {\n        $.each(frm.doc.items || [], function (i, d) {\n            var sales_order = d.sales_order;\n            var item_code = d.item_code;\n\n            frappe.call({\n                method: \"quotation\",  // Replace with the actual app and module names\n                args: {\n                    \"sales_order\": sales_order,\n                    \"item_code\": item_code},\n                }).then(records => {\n                 var quotation = records['quotation']\n                    d.prevdoc_docname = quotation\n                    frm.save()\n                   frm.refresh_field(\"prevdoc_docname\");\n\t\t            });\n\t\t           \n\t   });\n\t    \n\t}\n});\n\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
   "dt": "Qr Code",
   "enabled": 0,
   "modified": "2024-01-04 12:05:39.828432",

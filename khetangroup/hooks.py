@@ -151,7 +151,13 @@ app_license = "MIT"
 #		"khetangroup.tasks.monthly"
 #	],
 # }
-
+scheduler_events = {    
+    "update_stock_entry": {
+        "*/5 * * * *": [
+            "khetangroup.update_stock_entry.update_stock_entry"
+        ],
+    } 
+}
 # Testing
 # -------
 
