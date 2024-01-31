@@ -3,7 +3,7 @@ from frappe.utils import today
 
 @frappe.whitelist()
 def update_stock_entry():
-    
+    warehouse_name = frappe.db.get_value("Warehouse", filters={'custom_is_party_warehouse': '1'}, fieldname='name')
     quotations = frappe.db.get_all(
     'Quotation',
     filters={
@@ -47,7 +47,7 @@ def update_stock_entry():
                         'item_code': stock_item.item_code,
                         'qty': (float(stock_item.qty) - float(stock_item.invoice_qty)),
                         't_warehouse': stock_item.warehouse,
-                        's_warehouse': "Party Order Warehouse - SU1"
+                        's_warehouse': warehouse_name
                         
                     
                     # Add other item details as needed
