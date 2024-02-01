@@ -2,7 +2,7 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "naming_series:",
- "creation": "2023-11-25 12:12:22.025562",
+ "creation": "2024-02-01 13:27:17.977779",
  "default_view": "List",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -16,9 +16,7 @@
   "mrp",
   "size",
   "color",
-  "section_break_8sllm",
-  "qr_data",
-  "qrcode",
+  "amended_from",
   "amended_from"
  ],
  "fields": [
@@ -79,20 +77,11 @@
    "read_only": 1
   },
   {
-   "fieldname": "section_break_8sllm",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "qrcode",
-   "fieldtype": "Image",
-   "label": "Qrcode",
-   "options": "qr_data"
-  },
-  {
-   "fieldname": "qr_data",
-   "fieldtype": "Small Text",
-   "hidden": 1,
-   "label": "Qr Data",
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Qr Code",
    "print_hide": 1,
    "read_only": 1
   }
@@ -100,7 +89,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-01-31 16:42:18.797958",
+ "modified": "2024-02-01 13:27:17.977779",
  "modified_by": "Administrator",
  "module": "khetangroup",
  "name": "Qr Code",
