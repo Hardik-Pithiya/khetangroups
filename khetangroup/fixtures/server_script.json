@@ -8,11 +8,11 @@
   "doctype": "Server Script",
   "doctype_event": "After Save",
   "event_frequency": "All",
-  "modified": "2024-01-24 16:05:55.888591",
+  "modified": "2024-02-01 10:12:15.921646",
   "module": "khetangroup",
   "name": "quotation name in sales invoice",
   "reference_doctype": "Sales Invoice",
-  "script": "for item in doc.items:\n    a = item.sales_order\n    b = item.item_code\n    quotation = frappe.db.sql(\n        \"\"\"SELECT prevdoc_docname FROM `tabSales Order Item` WHERE parent=%s AND item_code = %s\"\"\",\n        (a, b)\n    )\n    \n    quotation1 = \"\"\n    for i in quotation:\n        for j in i:\n            if quotation1 == \"\":\n                quotation1 = j\n            else:\n                quotation1 = quotation1 + \",\" + j\n                \n    \n    frappe.msgprint(str(quotation1))\n   \n    frappe.db.set_value('Sales Invoice Item', {'parent': doc.name, 'item_code': item.item_code}, 'prevdoc_docname', quotation1)\n    ",
+  "script": "for item in doc.items:\n    a = item.sales_order\n    b = item.item_code\n    quotation = frappe.db.sql(\n        \"\"\"SELECT prevdoc_docname FROM `tabSales Order Item` WHERE parent=%s AND item_code = %s\"\"\",\n        (a, b)\n    )\n    \n    quotation1 = \"\"\n    for i in quotation:\n        for j in i:\n            if quotation1 == \"\":\n                quotation1 = j\n            else:\n                quotation1 = quotation1 + \",\" + j\n                \n    \n    \n   \n    frappe.db.set_value('Sales Invoice Item', {'parent': doc.name, 'item_code': item.item_code}, 'prevdoc_docname', quotation1)\n    ",
   "script_type": "DocType Event"
  },
  {
@@ -24,11 +24,11 @@
   "doctype": "Server Script",
   "doctype_event": "After Submit",
   "event_frequency": "All",
-  "modified": "2024-01-30 18:18:54.642614",
+  "modified": "2024-02-01 10:11:49.050281",
   "module": "khetangroup",
   "name": "sales invoice submit after update qty in quotation",
   "reference_doctype": "Sales Invoice",
-  "script": "for item in doc.items:\n    quotation_details = frappe.db.get_value(\"Quotation Item\",\n    {'parent': item.prevdoc_docname, \"item_code\":item.item_code},\n    'invoice_qty'  # Adjust the fields as needed\n    )\n    quotation_detail = frappe.db.get_value(\"Quotation\",\n    {'name': item.prevdoc_docname},\n    'total_invoice_qty'  # Adjust the fields as needed\n    )\n    \n    quotations_details = float(quotation_details)\n    invoices_qty = float(item.qty)\n    total_invoice = quotations_details + invoices_qty\n    sales_invoice_qty = float(quotation_detail or 0)\n    sales_total = float(doc.total_qty)\n    quotation_invoice = sales_invoice_qty + sales_total\n    frappe.msgprint(str(quotation_details))\n    quotation = frappe.db.set_value(\"Quotation Item\",{\"parent\":item.prevdoc_docname,\"item_code\":item.item_code},{\"invoice_qty\":total_invoice})\nquotation = frappe.db.set_value(\"Quotation\",{\"name\":item.prevdoc_docname},{\"total_invoice_qty\":quotation_invoice})",
+  "script": "for item in doc.items:\n    quotation_details = frappe.db.get_value(\"Quotation Item\",\n    {'parent': item.prevdoc_docname, \"item_code\":item.item_code},\n    'invoice_qty'  # Adjust the fields as needed\n    )\n    quotation_detail = frappe.db.get_value(\"Quotation\",\n    {'name': item.prevdoc_docname},\n    'total_invoice_qty'  # Adjust the fields as needed\n    )\n    \n    quotations_details = float(quotation_details)\n    invoices_qty = float(item.qty)\n    total_invoice = quotations_details + invoices_qty\n    sales_invoice_qty = float(quotation_detail or 0)\n    sales_total = float(doc.total_qty)\n    quotation_invoice = sales_invoice_qty + sales_total\n    \n    quotation = frappe.db.set_value(\"Quotation Item\",{\"parent\":item.prevdoc_docname,\"item_code\":item.item_code},{\"invoice_qty\":total_invoice})\nquotation = frappe.db.set_value(\"Quotation\",{\"name\":item.prevdoc_docname},{\"total_invoice_qty\":quotation_invoice})",
   "script_type": "DocType Event"
  },
  {
@@ -40,11 +40,11 @@
   "doctype": "Server Script",
   "doctype_event": "After Cancel",
   "event_frequency": "All",
-  "modified": "2024-01-30 18:32:18.262385",
+  "modified": "2024-02-01 10:11:09.024304",
   "module": "khetangroup",
   "name": "after_cancel sales invoice qty change in quotation",
   "reference_doctype": "Sales Invoice",
-  "script": "for item in doc.items:\n    quotation_details = frappe.db.get_value(\"Quotation Item\",\n    {'parent': item.prevdoc_docname, \"item_code\":item.item_code},\n    'invoice_qty'  # Adjust the fields as needed\n    )\n    quotation_detail = frappe.db.get_value(\"Quotation\",\n    {'name': item.prevdoc_docname},\n    'total_invoice_qty'  # Adjust the fields as needed\n    )\n    quotations_details = float(quotation_details)\n    invoices_qty = float(item.qty)\n    total_invoice = quotations_details - invoices_qty\n    frappe.msgprint(str(quotation_details))\n    sales_invoice_qty = float(quotation_detail or 0)\n    sales_total = float(doc.total_qty)\n    quotation_invoice = sales_invoice_qty - sales_total\n    quotation = frappe.db.set_value(\"Quotation Item\",{\"parent\":item.prevdoc_docname,\"item_code\":item.item_code},{\"invoice_qty\":total_invoice})\nquotation = frappe.db.set_value(\"Quotation\",{\"name\":item.prevdoc_docname},{\"total_invoice_qty\":quotation_invoice})",
+  "script": "for item in doc.items:\n    quotation_details = frappe.db.get_value(\"Quotation Item\",\n    {'parent': item.prevdoc_docname, \"item_code\":item.item_code},\n    'invoice_qty'  # Adjust the fields as needed\n    )\n    quotation_detail = frappe.db.get_value(\"Quotation\",\n    {'name': item.prevdoc_docname},\n    'total_invoice_qty'  # Adjust the fields as needed\n    )\n    quotations_details = float(quotation_details)\n    invoices_qty = float(item.qty)\n    total_invoice = quotations_details - invoices_qty\n    sales_invoice_qty = float(quotation_detail or 0)\n    sales_total = float(doc.total_qty)\n    quotation_invoice = sales_invoice_qty - sales_total\n    quotation = frappe.db.set_value(\"Quotation Item\",{\"parent\":item.prevdoc_docname,\"item_code\":item.item_code},{\"invoice_qty\":total_invoice})\nquotation = frappe.db.set_value(\"Quotation\",{\"name\":item.prevdoc_docname},{\"total_invoice_qty\":quotation_invoice})",
   "script_type": "DocType Event"
  },
  {
@@ -456,11 +456,11 @@
   "doctype": "Server Script",
   "doctype_event": "After Submit",
   "event_frequency": "All",
-  "modified": "2024-01-29 18:29:48.499093",
+  "modified": "2024-02-01 10:12:00.923509",
   "module": "khetangroup",
   "name": "Quotation Submit Time Stock Entry Auto Create For Material Transfer",
   "reference_doctype": "Quotation",
-  "script": "frappe.msgprint(str(doc.name))\nwarehouse_name = frappe.db.get_value(\"Warehouse\", filters={'custom_is_party_warehouse': '1'}, fieldname='name')\nfrappe.msgprint(str(warehouse_name))\n\n# Create a new Stock Entry document\nstock_entry = frappe.get_doc({\n    'doctype': 'Stock Entry',\n    'stock_entry_type': 'Material Transfer',\n    'quotation_no':doc.name,\n    'items': [],\n})\n\n# Add items to the Stock Entry document based on the items in doc\nfor item in doc.items:\n    stock_entry.append('items', {\n        'item_code': item.item_code,\n        'qty': item.qty,\n        't_warehouse': warehouse_name,\n        's_warehouse': item.warehouse\n        # Add other item details as needed\n    })\n\n# Insert the Stock Entry document\nstock_entry.insert()\n\n# Submit the Stock Entry document\nstock_entry.submit()\n",
+  "script": "frappe.msgprint(str(doc.name))\nwarehouse_name = frappe.db.get_value(\"Warehouse\", filters={'custom_is_party_warehouse': '1'}, fieldname='name')\n\n\n# Create a new Stock Entry document\nstock_entry = frappe.get_doc({\n    'doctype': 'Stock Entry',\n    'stock_entry_type': 'Material Transfer',\n    'quotation_no':doc.name,\n    'items': [],\n})\n\n# Add items to the Stock Entry document based on the items in doc\nfor item in doc.items:\n    stock_entry.append('items', {\n        'item_code': item.item_code,\n        'qty': item.qty,\n        't_warehouse': warehouse_name,\n        's_warehouse': item.warehouse\n        # Add other item details as needed\n    })\n\n# Insert the Stock Entry document\nstock_entry.insert()\n\n# Submit the Stock Entry document\nstock_entry.submit()\n",
   "script_type": "DocType Event"
  }
 ]
