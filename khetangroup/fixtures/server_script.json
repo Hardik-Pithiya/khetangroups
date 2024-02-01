@@ -8,11 +8,11 @@
   "doctype": "Server Script",
   "doctype_event": "After Save",
   "event_frequency": "All",
-  "modified": "2024-02-01 10:12:15.921646",
+  "modified": "2024-02-01 11:20:43.234399",
   "module": "khetangroup",
   "name": "quotation name in sales invoice",
   "reference_doctype": "Sales Invoice",
-  "script": "for item in doc.items:\n    a = item.sales_order\n    b = item.item_code\n    quotation = frappe.db.sql(\n        \"\"\"SELECT prevdoc_docname FROM `tabSales Order Item` WHERE parent=%s AND item_code = %s\"\"\",\n        (a, b)\n    )\n    \n    quotation1 = \"\"\n    for i in quotation:\n        for j in i:\n            if quotation1 == \"\":\n                quotation1 = j\n            else:\n                quotation1 = quotation1 + \",\" + j\n                \n    \n    \n   \n    frappe.db.set_value('Sales Invoice Item', {'parent': doc.name, 'item_code': item.item_code}, 'prevdoc_docname', quotation1)\n    ",
+  "script": "for item in doc.items:\n    a = item.sales_order\n    b = item.item_code\n    quotation = frappe.db.sql(\n        \"\"\"SELECT prevdoc_docname FROM `tabSales Order Item` WHERE parent=%s AND item_code = %s\"\"\",\n        (a, b)\n    )\n\n    # Check if the result is not empty before updating\n    if quotation:\n        prevdoc_docname = quotation[0][0]\n        frappe.db.set_value('Sales Invoice Item', {'parent': doc.name, 'item_code': item.item_code}, 'prevdoc_docname', prevdoc_docname)\ndoc.reload()",
   "script_type": "DocType Event"
  },
  {
@@ -24,11 +24,11 @@
   "doctype": "Server Script",
   "doctype_event": "After Submit",
   "event_frequency": "All",
-  "modified": "2024-02-01 10:11:49.050281",
+  "modified": "2024-02-01 10:36:06.187514",
   "module": "khetangroup",
   "name": "sales invoice submit after update qty in quotation",
   "reference_doctype": "Sales Invoice",
-  "script": "for item in doc.items:\n    quotation_details = frappe.db.get_value(\"Quotation Item\",\n    {'parent': item.prevdoc_docname, \"item_code\":item.item_code},\n    'invoice_qty'  # Adjust the fields as needed\n    )\n    quotation_detail = frappe.db.get_value(\"Quotation\",\n    {'name': item.prevdoc_docname},\n    'total_invoice_qty'  # Adjust the fields as needed\n    )\n    \n    quotations_details = float(quotation_details)\n    invoices_qty = float(item.qty)\n    total_invoice = quotations_details + invoices_qty\n    sales_invoice_qty = float(quotation_detail or 0)\n    sales_total = float(doc.total_qty)\n    quotation_invoice = sales_invoice_qty + sales_total\n    \n    quotation = frappe.db.set_value(\"Quotation Item\",{\"parent\":item.prevdoc_docname,\"item_code\":item.item_code},{\"invoice_qty\":total_invoice})\nquotation = frappe.db.set_value(\"Quotation\",{\"name\":item.prevdoc_docname},{\"total_invoice_qty\":quotation_invoice})",
+  "script": "for item in doc.items:\n    quotation_details = frappe.db.get_value(\"Quotation Item\",\n        {'parent': item.prevdoc_docname, \"item_code\":item.item_code},\n        'invoice_qty'  # Adjust the fields as needed\n    )\n    quotation_detail = frappe.db.get_value(\"Quotation\",\n        {'name': item.prevdoc_docname},\n        'total_invoice_qty'  # Adjust the fields as needed\n    )\n    \n    # Check if the database queries returned valid values\n    if quotation_details is not None:\n        quotations_details = float(quotation_details)\n    else:\n        quotations_details = 0.0\n    \n    if quotation_detail is not None:\n        sales_invoice_qty = float(quotation_detail)\n    else:\n        sales_invoice_qty = 0.0\n    \n    invoices_qty = float(item.qty)\n    total_invoice = quotations_details + invoices_qty\n    sales_total = float(doc.total_qty)\n    quotation_invoice = sales_invoice_qty + sales_total\n    \n    quotation = frappe.db.set_value(\"Quotation Item\", {\"parent\":item.prevdoc_docname, \"item_code\":item.item_code}, {\"invoice_qty\":total_invoice})\n\n# Note: This should be outside the loop to update the total for the entire quotation\nquotation = frappe.db.set_value(\"Quotation\", {\"name\":item.prevdoc_docname}, {\"total_invoice_qty\":quotation_invoice})\n",
   "script_type": "DocType Event"
  },
  {
