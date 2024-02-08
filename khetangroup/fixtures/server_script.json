@@ -270,5 +270,21 @@
   "reference_doctype": "Quotation",
   "script": "warehouse_name = frappe.db.get_value(\"Warehouse\", filters={'custom_is_party_warehouse': '1'}, fieldname='name')\n\n\n# Create a new Stock Entry document\nstock_entry = frappe.get_doc({\n    'doctype': 'Stock Entry',\n    'stock_entry_type': 'Material Transfer',\n    'quotation_no':doc.name,\n    'items': [],\n})\n\n# Add items to the Stock Entry document based on the items in doc\nfor item in doc.items:\n    stock_entry.append('items', {\n        'item_code': item.item_code,\n        'qty': item.qty,\n        't_warehouse': warehouse_name,\n        's_warehouse': item.warehouse\n        # Add other item details as needed\n    })\n\n# Insert the Stock Entry document\nstock_entry.insert()\n\n# Submit the Stock Entry document\nstock_entry.submit()\n",
   "script_type": "DocType Event"
+ },
+ {
+  "allow_guest": 0,
+  "api_method": null,
+  "cron_format": null,
+  "disabled": 1,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "After Save",
+  "event_frequency": "All",
+  "modified": "2024-02-08 11:45:24.164960",
+  "module": "khetangroup",
+  "name": "qrcode create",
+  "reference_doctype": "Qr Code",
+  "script": "frappe.msgprint(str(doc.item_code))\n",
+  "script_type": "DocType Event"
  }
 ]
