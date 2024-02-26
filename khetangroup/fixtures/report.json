@@ -2223,37 +2223,37 @@
     "parent": "Low Stock Balance",
     "parentfield": "columns",
     "parenttype": "Report",
-    "width": 0
+    "width": 200
    },
    {
-    "fieldname": "se.warehouse",
-    "fieldtype": "Link",
-    "label": "Warehouse",
-    "options": "Warehouse",
-    "parent": "Low Stock Balance",
-    "parentfield": "columns",
-    "parenttype": "Report",
-    "width": 0
-   },
-   {
-    "fieldname": "bin.actual_qty",
-    "fieldtype": "Float",
-    "label": "Qty",
+    "fieldname": "item.item_name",
+    "fieldtype": "Data",
+    "label": "Item Name",
     "options": null,
     "parent": "Low Stock Balance",
     "parentfield": "columns",
     "parenttype": "Report",
-    "width": 0
+    "width": 200
    },
    {
-    "fieldname": "se.safety_stock",
+    "fieldname": "item.safety_stock",
     "fieldtype": "Float",
-    "label": "Safety Qty",
+    "label": "Safety Stock",
     "options": null,
     "parent": "Low Stock Balance",
     "parentfield": "columns",
     "parenttype": "Report",
-    "width": 0
+    "width": 200
+   },
+   {
+    "fieldname": "Actual Qty",
+    "fieldtype": "Float",
+    "label": "Actual Qty",
+    "options": null,
+    "parent": "Low Stock Balance",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 200
    }
   ],
   "disable_prepared_report": 0,
@@ -2265,11 +2265,11 @@
   "javascript": null,
   "json": null,
   "letter_head": "Khetan Logo",
-  "modified": "2023-11-25 12:46:32.719535",
+  "modified": "2024-02-23 13:01:30.416717",
   "module": "khetangroup",
   "name": "Low Stock Balance",
   "prepared_report": 0,
-  "query": "select  item.item_code, se.warehouse, bin.actual_qty, se.safety_stock from `tabItem` item join `tabSafety Stock` se on item.name = se.parent\n             join `tabBin` bin on item.item_code = bin.item_code\n             where item.disabled = 0\n             and\n             se.warehouse = bin.warehouse\n             and \n             bin.actual_qty < se.safety_stock",
+  "query": "SELECT item.item_code, \n       item.item_name,\n       SUM(bin.actual_qty) AS 'Actual Qty', \n       item.safety_stock\nFROM `tabItem` item\nJOIN `tabBin` bin ON item.item_code = bin.item_code\nWHERE item.disabled = 0\n      AND bin.actual_qty >= 0\n      AND bin.actual_qty < item.safety_stock\nGROUP BY item.item_code;\n",
   "ref_doctype": "Item",
   "reference_report": null,
   "report_name": "Low Stock Balance",
