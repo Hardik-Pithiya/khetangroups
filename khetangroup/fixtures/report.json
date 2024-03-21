@@ -2246,7 +2246,7 @@
     "width": 200
    },
    {
-    "fieldname": "Actual Qty",
+    "fieldname": "SUM(bin.actual_qty)",
     "fieldtype": "Float",
     "label": "Actual Qty",
     "options": null,
@@ -2254,6 +2254,16 @@
     "parentfield": "columns",
     "parenttype": "Report",
     "width": 200
+   },
+   {
+    "fieldname": "SUM(CASE WHEN item.stock_uom = 'Set' THEN bin.actual_qty / item.set_box ELSE bin.actual_qty END)",
+    "fieldtype": "Float",
+    "label": "Converstion Qty",
+    "options": null,
+    "parent": "Low Stock Balance",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
    }
   ],
   "disable_prepared_report": 0,
@@ -2265,11 +2275,11 @@
   "javascript": null,
   "json": null,
   "letter_head": "Khetan Logo",
-  "modified": "2024-02-23 13:01:30.416717",
+  "modified": "2024-03-14 17:03:54.023919",
   "module": "khetangroup",
   "name": "Low Stock Balance",
   "prepared_report": 0,
-  "query": "SELECT item.item_code, \n       item.item_name,\n       SUM(bin.actual_qty) AS 'Actual Qty', \n       item.safety_stock\nFROM `tabItem` item\nJOIN `tabBin` bin ON item.item_code = bin.item_code\nWHERE item.disabled = 0\n      AND bin.actual_qty >= 0\n      AND bin.actual_qty < item.safety_stock\nGROUP BY item.item_code;\n",
+  "query": "SELECT \n    item.item_code, \n    item.item_name,\n    item.safety_stock,\n    SUM(bin.actual_qty) AS 'Actual Qty',\n    SUM(CASE WHEN item.set_box  THEN bin.actual_qty / item.set_box ELSE bin.actual_qty END) AS 'Converstion Qty'\nFROM \n    `tabItem` item\nJOIN \n    `tabBin` bin ON item.item_code = bin.item_code\nWHERE \n    item.disabled = 0\n    AND bin.actual_qty >= 0\n    AND bin.actual_qty > item.safety_stock\n    AND item.safety_stock\nGROUP BY \n    item.item_code;\n",
   "ref_doctype": "Item",
   "reference_report": null,
   "report_name": "Low Stock Balance",

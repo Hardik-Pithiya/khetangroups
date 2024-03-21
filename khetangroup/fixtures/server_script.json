@@ -264,11 +264,11 @@
   "doctype": "Server Script",
   "doctype_event": "After Submit",
   "event_frequency": "All",
-  "modified": "2024-02-01 10:21:10.650744",
+  "modified": "2024-03-19 13:20:27.235525",
   "module": "khetangroup",
   "name": "Quotation Submit Time Stock Entry Auto Create For Material Transfer",
   "reference_doctype": "Quotation",
-  "script": "warehouse_name = frappe.db.get_value(\"Warehouse\", filters={'custom_is_party_warehouse': '1'}, fieldname='name')\n\n\n# Create a new Stock Entry document\nstock_entry = frappe.get_doc({\n    'doctype': 'Stock Entry',\n    'stock_entry_type': 'Material Transfer',\n    'quotation_no':doc.name,\n    'items': [],\n})\n\n# Add items to the Stock Entry document based on the items in doc\nfor item in doc.items:\n    stock_entry.append('items', {\n        'item_code': item.item_code,\n        'qty': item.qty,\n        't_warehouse': warehouse_name,\n        's_warehouse': item.warehouse\n        # Add other item details as needed\n    })\n\n# Insert the Stock Entry document\nstock_entry.insert()\n\n# Submit the Stock Entry document\nstock_entry.submit()\n",
+  "script": "warehouse_name = frappe.db.get_value(\"Warehouse\", filters={'custom_is_party_warehouse': '1'}, fieldname='name')\n\n\n# Create a new Stock Entry document\nstock_entry = frappe.get_doc({\n    'doctype': 'Stock Entry',\n    'stock_entry_type': 'Material Transfer',\n    'quotation_no':doc.name,\n    'items': [],\n})\n\n# Add items to the Stock Entry document based on the items in doc\nfor item in doc.items:\n    stock_entry.append('items', {\n        'item_code': item.item_code,\n        'qty': item.qty,\n        't_warehouse': warehouse_name,\n        's_warehouse': item.warehouse\n        # Add other item details as needed\n    })\n\n\n\n# Submit the Stock Entry document\nstock_entry.submit()\n",
   "script_type": "DocType Event"
  },
  {
@@ -285,6 +285,22 @@
   "name": "qrcode create",
   "reference_doctype": "Qr Code",
   "script": "frappe.msgprint(str(doc.item_code))\n",
+  "script_type": "DocType Event"
+ },
+ {
+  "allow_guest": 0,
+  "api_method": "stock_available",
+  "cron_format": null,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "After Save",
+  "event_frequency": "All",
+  "modified": "2024-03-21 11:21:14.010279",
+  "module": "khetangroup",
+  "name": "stock_qty_available_transaction Date Wise",
+  "reference_doctype": "Quotation",
+  "script": "for item in doc.items:\n    # Querying latest actual quantity for the item until the transaction date\n    result = frappe.db.sql(f'''\n        SELECT qty_after_transaction\n        FROM `tabStock Ledger Entry` \n        WHERE item_code = '{item.item_code}'\n        AND warehouse = '{item.warehouse}'\n        AND posting_date <= '{doc.transaction_date}'\n        ORDER BY posting_date DESC, posting_time DESC\n        LIMIT 1\n    ''')\n\n    \n    if result:\n        actual_qty = result[0][0]  # Accessing the actual_qty value\n        frappe.msgprint(str(actual_qty))\n        frappe.db.set_value('Quotation Item', {'parent': doc.name, 'item_code': item.item_code}, 'actual_qty', actual_qty)\n\n\ndoc.reload()\n\n       \n\n\n",
   "script_type": "DocType Event"
  }
 ]
