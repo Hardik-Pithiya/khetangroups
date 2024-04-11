@@ -405,5 +405,27 @@
   "name": "Qrcode Scan",
   "script": "frappe.ui.form.on('Quotation', {\n\tscan_barcode:function(frm) {\n\t\tif(frm.doc.material_transfer == \"Qrcode Against\"){\n\t\t     var scan_barcode = frm.doc.scan_barcode;\n\n\t\t    var existingItemIndex = -1;\n         var itemValueRegex = /=\\s*([^,]+)/; // Regex pattern to match the value after '='\n        var match = scan_barcode.match(itemValueRegex);\n        var extractedValue = match ? match[1].trim() : null; \n        console.log(extractedValue)\n        frm.doc.items.forEach(function(item, index) {\n            if (item.item_code === extractedValue) {\n                existingItemIndex = index;\n                console.log(\"hello\")\n            }\n        });\n         if (existingItemIndex !== -1) {\n            \n            frappe.model.set_value(frm.doc.items[existingItemIndex].doctype, frm.doc.items[existingItemIndex].name, 'material_transfer', 1);\n        } \n         frm.refresh_field('items');\n         frm.save()\n        cur_frm.doc.new_scan_barcode = ''\n\t\t}\n\t}\n})",
   "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Quotation",
+  "enabled": 1,
+  "modified": "2024-04-11 18:03:50.382655",
+  "module": "khetangroup",
+  "name": "user_wise field read only",
+  "script": "\n\nfrappe.ui.form.on('Quotation',  {\n    refresh: function(frm) {\n        if(frappe.user_roles, [\"Qrcode Manager\"])\n     {   \n         frm.fields.forEach(function(field) {\n            field.df.read_only = 1;\n        });\n           frm.set_df_property('scan_barcode', 'read_only', 0);\n\n        // Refresh form fields\n        frm.refresh_fields();\n    }\n    }\n});\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Qr Code",
+  "enabled": 1,
+  "modified": "2024-04-11 18:36:34.804892",
+  "module": "khetangroup",
+  "name": "Qrcode Month Year",
+  "script": "frappe.ui.form.on('Qr Code', {\n    manufacturing_date: function (frm) {\n        // Get the selected manufacturing date from the form\n        const manufacturingDate = frm.doc.manufacturing_date;\n\n        // Create a JavaScript Date object from the manufacturing date string\n        const selectedDate = new Date(manufacturingDate);\n\n        // Define an array of month abbreviations\n        const monthAbbreviations = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];\n\n        // Extract the month and year from the selected date\n        const selectedMonthIndex = selectedDate.getMonth(); // Month index (0-11)\n        const selectedYear = selectedDate.getFullYear(); // Full year (e.g., 2024)\n\n        // Get the month abbreviation using the month index\n        const selectedMonthAbbreviation = monthAbbreviations[selectedMonthIndex];\n\n        // Log the month abbreviation and year to the console\n        \n        frm.set_value(\"month_year\",selectedMonthAbbreviation + '/' + selectedYear)\n    }\n});\n",
+  "view": "Form"
  }
 ]

@@ -11,12 +11,12 @@
   "naming_series",
   "item_code",
   "manufacturing_date",
+  "month_year",
   "item_type",
   "column_break_mxecq",
   "mrp",
   "size",
   "color",
-  "amended_from",
   "amended_from"
  ],
  "fields": [
@@ -84,12 +84,18 @@
    "options": "Qr Code",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "month_year",
+   "fieldtype": "Data",
+   "label": "Month/Year",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-02-01 13:27:17.977779",
+ "modified": "2024-04-11 18:20:33.594127",
  "modified_by": "Administrator",
  "module": "khetangroup",
  "name": "Qr Code",
