@@ -25,8 +25,8 @@
   "docstatus": 0,
   "doctype": "Client Script",
   "dt": "Qr Code",
-  "enabled": 0,
-  "modified": "2024-03-27 16:40:07.503095",
+  "enabled": 1,
+  "modified": "2024-05-09 13:19:52.108463",
   "module": "khetangroup",
   "name": "qrcode create",
   "script": "frappe.ui.form.on('Qr Code', {\n\tafter_save:function(frm) {\n\tvar product_name = frm.doc.item_code;\n\tvar mrp = frm.doc.mrp;\n\t\n\tvar qrData = \"Product Name: \" + product_name + \", MRP: \" + mrp;\n\tconsole.log(qrData)\n\t\n\tvar qr = qrcode(0,'M');\n\tqr.addData(qrData);\n\tqr.make();\n\t\n\tvar qrimage = qr.createDataURL(8,0);\n\t\n\tconsole.log(qrimage)\n\t}\n})",
@@ -411,10 +411,10 @@
   "doctype": "Client Script",
   "dt": "Quotation",
   "enabled": 1,
-  "modified": "2024-04-11 18:03:50.382655",
+  "modified": "2024-04-12 16:56:26.882012",
   "module": "khetangroup",
   "name": "user_wise field read only",
-  "script": "\n\nfrappe.ui.form.on('Quotation',  {\n    refresh: function(frm) {\n        if(frappe.user_roles, [\"Qrcode Manager\"])\n     {   \n         frm.fields.forEach(function(field) {\n            field.df.read_only = 1;\n        });\n           frm.set_df_property('scan_barcode', 'read_only', 0);\n\n        // Refresh form fields\n        frm.refresh_fields();\n    }\n    }\n});\n",
+  "script": "frappe.ui.form.on('Quotation', {\n    refresh: function(frm) {\n        \n        console.log(frappe.session.user)\n        \n         if (frappe.session.user === \"paulkamdev7@gmail.com\") {\n                    frm.fields.forEach(function(field) {\n                        field.df.read_only = 1;\n                    });\n                    frm.set_df_property('scan_barcode', 'read_only', 0);\n\n                    // Refresh form fields\n                    frm.refresh_fields();\n                }\n        \n    }\n});",
   "view": "Form"
  },
  {
@@ -422,10 +422,10 @@
   "doctype": "Client Script",
   "dt": "Qr Code",
   "enabled": 1,
-  "modified": "2024-04-11 18:36:34.804892",
+  "modified": "2024-05-09 13:20:29.795008",
   "module": "khetangroup",
   "name": "Qrcode Month Year",
-  "script": "frappe.ui.form.on('Qr Code', {\n    manufacturing_date: function (frm) {\n        // Get the selected manufacturing date from the form\n        const manufacturingDate = frm.doc.manufacturing_date;\n\n        // Create a JavaScript Date object from the manufacturing date string\n        const selectedDate = new Date(manufacturingDate);\n\n        // Define an array of month abbreviations\n        const monthAbbreviations = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];\n\n        // Extract the month and year from the selected date\n        const selectedMonthIndex = selectedDate.getMonth(); // Month index (0-11)\n        const selectedYear = selectedDate.getFullYear(); // Full year (e.g., 2024)\n\n        // Get the month abbreviation using the month index\n        const selectedMonthAbbreviation = monthAbbreviations[selectedMonthIndex];\n\n        // Log the month abbreviation and year to the console\n        \n        frm.set_value(\"month_year\",selectedMonthAbbreviation + '/' + selectedYear)\n    }\n});\n",
+  "script": "frappe.ui.form.on('Qr Code', {\n    manufacturing_date: function (frm) {\n        // Get the selected manufacturing date from the form\n        const manufacturingDate = frm.doc.manufacturing_date;\n\n        // Create a JavaScript Date object from the manufacturing date string\n        const selectedDate = new Date(manufacturingDate);\n\n        // Define an array of month abbreviations\n        const monthAbbreviations = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];\n\n        // Extract the month and year from the selected date\n        const selectedMonthIndex = selectedDate.getMonth(); // Month index (0-11)\n        const selectedYear = selectedDate.getFullYear(); // Full year (e.g., 2024)\n\n        // Get the month abbreviation using the month index\n        const selectedMonthAbbreviation = monthAbbreviations[selectedMonthIndex];\n\n        // Log the month abbreviation and year to the console\n        \n        frm.set_value(\"month_year\",selectedMonthAbbreviation + '/' + selectedYear)\n    }\n});\n\n",
   "view": "Form"
  }
 ]
