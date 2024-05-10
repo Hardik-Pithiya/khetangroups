@@ -25,8 +25,8 @@
   "docstatus": 0,
   "doctype": "Client Script",
   "dt": "Qr Code",
-  "enabled": 1,
-  "modified": "2024-05-09 13:19:52.108463",
+  "enabled": 0,
+  "modified": "2024-05-09 18:31:52.974164",
   "module": "khetangroup",
   "name": "qrcode create",
   "script": "frappe.ui.form.on('Qr Code', {\n\tafter_save:function(frm) {\n\tvar product_name = frm.doc.item_code;\n\tvar mrp = frm.doc.mrp;\n\t\n\tvar qrData = \"Product Name: \" + product_name + \", MRP: \" + mrp;\n\tconsole.log(qrData)\n\t\n\tvar qr = qrcode(0,'M');\n\tqr.addData(qrData);\n\tqr.make();\n\t\n\tvar qrimage = qr.createDataURL(8,0);\n\t\n\tconsole.log(qrimage)\n\t}\n})",
@@ -411,10 +411,10 @@
   "doctype": "Client Script",
   "dt": "Quotation",
   "enabled": 1,
-  "modified": "2024-04-12 16:56:26.882012",
+  "modified": "2024-05-10 12:26:01.354515",
   "module": "khetangroup",
   "name": "user_wise field read only",
-  "script": "frappe.ui.form.on('Quotation', {\n    refresh: function(frm) {\n        \n        console.log(frappe.session.user)\n        \n         if (frappe.session.user === \"paulkamdev7@gmail.com\") {\n                    frm.fields.forEach(function(field) {\n                        field.df.read_only = 1;\n                    });\n                    frm.set_df_property('scan_barcode', 'read_only', 0);\n\n                    // Refresh form fields\n                    frm.refresh_fields();\n                }\n        \n    }\n});",
+  "script": "frappe.ui.form.on('Quotation', {\n    refresh: function(frm) {\n        \n        console.log(frappe.session.user)\n        \n         if (frappe.session.user === \"paulkamdev7@gmail.com\") {\n                    frm.fields.forEach(function(field) {\n                        field.df.read_only = 1;\n                    });\n                    frm.set_df_property('scan_barcode', 'read_only', 0);\n\n                    // Refresh form fields\n                    frm.refresh_fields();\n                }\n     frappe.call({\n                method: 'user_detail',\n                args: {\n                   name : frappe.session.user\n                },\n                  callback: function(response) {\n                    console.log(response.role_profile)\n                    if(response.role_profile === \"Plant Manager\"){\n                         frm.set_df_property('form_save_type', 'hidden', 0);\n                  frm.refresh_fields();\n                    }\n                 \n                    }\n     })\n    }\n});",
   "view": "Form"
  },
  {

@@ -312,11 +312,27 @@
   "doctype": "Server Script",
   "doctype_event": "Before Save",
   "event_frequency": "All",
-  "modified": "2024-05-09 11:52:27.063775",
+  "modified": "2024-05-09 18:15:13.686873",
   "module": "khetangroup",
   "name": "Stock Check Warehouse",
   "reference_doctype": "Quotation",
-  "script": "for item in doc.items:\n    if item.qty > item.actual_qty:\n        idx = item.idx\n        item_code = item.item_code\n        warehouse = item.warehouse\n        error_message = f\"Row {idx}: Quantity not available for {item_code} in warehouse {warehouse}.<br><br>Available quantity is {item.actual_qty}, you need {item.qty}.\"\n        frappe.throw(error_message, title=_(\"Insufficient Stock\"))\n",
+  "script": "if doc.form_save_type != 'For Emeregency':\n    \n    for item in doc.items:\n        if item.qty > item.actual_qty:\n            idx = item.idx\n            item_code = item.item_code\n            warehouse = item.warehouse\n            error_message = f\"Row {idx}: Quantity not available for {item_code} in warehouse {warehouse}.<br><br>Available quantity is {item.actual_qty}, you need {item.qty}.\"\n            frappe.throw(error_message, title=_(\"Insufficient Stock\"))\n",
   "script_type": "DocType Event"
+ },
+ {
+  "allow_guest": 0,
+  "api_method": "user_detail",
+  "cron_format": null,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "Before Insert",
+  "event_frequency": "All",
+  "modified": "2024-05-10 12:18:39.778883",
+  "module": "khetangroup",
+  "name": "user detail",
+  "reference_doctype": "Quotation",
+  "script": "name = frappe.form_dict[\"name\"]\nrole_profile = frappe.db.sql(\"\"\" select role_profile_name from `tabUser` where name=%s \"\"\",name)\nrole_profile1 = \"\"\nfor i in role_profile:\n    for j in i:\n        if role_profile1 == \"\":\n            role_profile1 = j\n        else:\n            role_profile1 = role_profile1 + \",\" + j\nfrappe.response[\"role_profile\"]=role_profile1",
+  "script_type": "API"
  }
 ]
