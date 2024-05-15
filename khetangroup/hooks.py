@@ -53,11 +53,11 @@ app_license = "MIT"
 
 # Jinja
 # ----------
-# jinja = {
-# 	"methods": [
-# 		"khetangroup.khetangroup.qr_demo.get_qr_code"
-# 	]
-# }
+jinja = {
+	"methods": [
+		"khetangroup.qrcode.get_qr_code"
+	]
+}
 
 # add methods and filters to jinja environment
 # jinja = {

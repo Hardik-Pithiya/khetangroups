@@ -17,7 +17,6 @@
   "mrp",
   "size",
   "color",
-  "qrcode_data",
   "amended_from"
  ],
  "fields": [
@@ -91,17 +90,12 @@
    "fieldtype": "Data",
    "label": "Month/Year",
    "read_only": 1
-  },
-  {
-   "fieldname": "qrcode_data",
-   "fieldtype": "Long Text",
-   "label": "Qrcode Data"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-26 13:47:23.436425",
+ "modified": "2024-05-15 10:58:40.563206",
  "modified_by": "Administrator",
  "module": "khetangroup",
  "name": "Qr Code",
