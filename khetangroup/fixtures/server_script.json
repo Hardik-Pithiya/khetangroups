@@ -264,11 +264,11 @@
   "doctype": "Server Script",
   "doctype_event": "After Submit",
   "event_frequency": "All",
-  "modified": "2024-04-04 18:59:02.215740",
+  "modified": "2024-05-21 16:11:34.394781",
   "module": "khetangroup",
   "name": "Quotation Submit Time Stock Entry Auto Create For Material Transfer",
   "reference_doctype": "Quotation",
-  "script": "warehouse_name = frappe.db.get_value(\"Warehouse\", filters={'custom_is_party_warehouse': '1'}, fieldname='name')\n\nif doc.material_transfer == 'Manual':\n# Create a new Stock Entry document\n    stock_entry = frappe.get_doc({\n        'doctype': 'Stock Entry',\n        'stock_entry_type': 'Material Transfer',\n        'quotation_no':doc.name,\n        'items': [],\n    })\n    \n    # Add items to the Stock Entry document based on the items in doc\n    for item in doc.items:\n        stock_entry.append('items', {\n            'item_code': item.item_code,\n            'qty': item.qty,\n            't_warehouse': warehouse_name,\n            's_warehouse': item.warehouse\n            # Add other item details as needed\n        })\n    \n    \n    \n    # Submit the Stock Entry document\n    stock_entry.submit()\nelif doc.material_transfer == 'Qrcode Against':\n    stock_entry = frappe.get_doc({\n        'doctype': 'Stock Entry',\n        'stock_entry_type': 'Material Transfer',\n        'quotation_no':doc.name,\n        'items': [],\n    })\n    \n    # Add items to the Stock Entry document based on the items in doc\n    for item in doc.items:\n        if item.material_transfer == 1:\n            stock_entry.append('items', {\n            'item_code': item.item_code,\n            'qty': item.qty,\n            't_warehouse': warehouse_name,\n            's_warehouse': item.warehouse\n            # Add other item details as needed\n         })\n    \n    \n    \n    # Submit the Stock Entry document\n    stock_entry.submit()\n",
+  "script": "warehouse_name = frappe.db.get_value(\"Warehouse\", filters={'custom_is_party_warehouse': '1'}, fieldname='name')\nstock_entry = frappe.get_doc({\n    'doctype': 'Stock Entry',\n    'stock_entry_type': 'Material Transfer',\n    'quotation_no':doc.name,\n    'items': [],\n})\n\n# Add items to the Stock Entry document based on the items in doc\nfor item in doc.items:\n    stock_entry.append('items', {\n        'item_code': item.item_code,\n        'qty': item.qty,\n        't_warehouse': warehouse_name,\n        's_warehouse': item.warehouse\n        # Add other item details as needed\n    })\n\n\n\n# Submit the Stock Entry document\nstock_entry.submit()\n",
   "script_type": "DocType Event"
  },
  {
