@@ -8,11 +8,11 @@
   "doctype": "Server Script",
   "doctype_event": "After Save",
   "event_frequency": "All",
-  "modified": "2024-02-01 11:20:43.234399",
+  "modified": "2024-05-24 15:16:37.426561",
   "module": "khetangroup",
   "name": "quotation name in sales invoice",
   "reference_doctype": "Sales Invoice",
-  "script": "for item in doc.items:\n    a = item.sales_order\n    b = item.item_code\n    quotation = frappe.db.sql(\n        \"\"\"SELECT prevdoc_docname FROM `tabSales Order Item` WHERE parent=%s AND item_code = %s\"\"\",\n        (a, b)\n    )\n\n    # Check if the result is not empty before updating\n    if quotation:\n        prevdoc_docname = quotation[0][0]\n        frappe.db.set_value('Sales Invoice Item', {'parent': doc.name, 'item_code': item.item_code}, 'prevdoc_docname', prevdoc_docname)\ndoc.reload()",
+  "script": "for item in doc.items:\n    a = item.sales_order\n    b = item.item_code\n    quotation = frappe.db.sql(\n        \"\"\"SELECT prevdoc_docname FROM `tabSales Order Item` WHERE parent=%s AND item_code = %s\"\"\",\n        (a, b)\n    )\n\n    # Check if the result is not empty before updating\n    if quotation:\n        prevdoc_docname = quotation[0][0]\n        frappe.db.set_value('Sales Invoice Item', {'parent': doc.name, 'item_code': item.item_code}, 'prevdoc_docname', prevdoc_docname)\n        quotation_item = frappe.db.sql(\n        \"\"\"SELECT qty,invoice_qty FROM `tabQuotation Item` WHERE parent=%s AND item_code = %s\"\"\",\n        (prevdoc_docname, b) )\n        total_qty = quotation_item[0][0] - quotation_item[0][1]\n        \n        frappe.db.set_value('Sales Invoice Item', {'parent': doc.name, 'item_code': item.item_code}, 'quotation_qty', total_qty)\ndoc.reload()",
   "script_type": "DocType Event"
  },
  {
@@ -40,7 +40,7 @@
   "doctype": "Server Script",
   "doctype_event": "After Cancel",
   "event_frequency": "All",
-  "modified": "2024-02-01 10:11:09.024304",
+  "modified": "2024-05-24 12:20:04.205654",
   "module": "khetangroup",
   "name": "after_cancel sales invoice qty change in quotation",
   "reference_doctype": "Sales Invoice",
@@ -318,5 +318,21 @@
   "reference_doctype": "Quotation",
   "script": "name = frappe.form_dict[\"name\"]\nrole_profile = frappe.db.sql(\"\"\" select role_profile_name from `tabUser` where name=%s \"\"\",name)\nrole_profile1 = \"\"\nfor i in role_profile:\n    for j in i:\n        if role_profile1 == \"\":\n            role_profile1 = j\n        else:\n            role_profile1 = role_profile1 + \",\" + j\nfrappe.response[\"role_profile\"]=role_profile1",
   "script_type": "API"
+ },
+ {
+  "allow_guest": 0,
+  "api_method": null,
+  "cron_format": null,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "Before Submit",
+  "event_frequency": "All",
+  "modified": "2024-05-24 16:18:02.219589",
+  "module": "khetangroup",
+  "name": "sales invoice submit before the check qty",
+  "reference_doctype": "Sales Invoice",
+  "script": "for item in doc.items:\n    if item.material_transfer == 1:\n        if item.qty >= item.quotation_qty:\n            frappe.throw(f\"Row {item.idx}: Sales invoice qty is less than quotation qty \")\n    else:\n        frappe.throw(f\"Row {item.idx}: Please Scan Barcode\")\n            ",
+  "script_type": "DocType Event"
  }
 ]
