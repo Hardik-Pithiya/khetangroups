@@ -17,6 +17,7 @@
   "mrp",
   "size",
   "color",
+  "scanned",
   "amended_from"
  ],
  "fields": [
@@ -90,12 +91,18 @@
    "fieldtype": "Data",
    "label": "Month/Year",
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "scanned",
+   "fieldtype": "Check",
+   "label": "Scanned"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-15 10:58:40.563206",
+ "modified": "2024-05-27 11:48:55.553161",
  "modified_by": "Administrator",
  "module": "khetangroup",
  "name": "Qr Code",
