@@ -13,11 +13,13 @@
   "manufacturing_date",
   "month_year",
   "item_type",
+  "barcode_number",
   "column_break_mxecq",
   "mrp",
   "size",
   "color",
   "scanned",
+  "scan_value",
   "amended_from"
  ],
  "fields": [
@@ -97,12 +99,23 @@
    "fieldname": "scanned",
    "fieldtype": "Check",
    "label": "Scanned"
+  },
+  {
+   "fieldname": "scan_value",
+   "fieldtype": "Small Text",
+   "label": "Scan Value",
+   "read_only": 1
+  },
+  {
+   "fieldname": "barcode_number",
+   "fieldtype": "Float",
+   "label": "Barcode Number"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-27 11:48:55.553161",
+ "modified": "2024-05-31 16:38:32.022968",
  "modified_by": "Administrator",
  "module": "khetangroup",
  "name": "Qr Code",
