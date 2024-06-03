@@ -328,11 +328,11 @@
   "doctype": "Server Script",
   "doctype_event": "Before Submit",
   "event_frequency": "All",
-  "modified": "2024-05-28 17:45:20.267457",
+  "modified": "2024-06-03 15:27:11.230236",
   "module": "khetangroup",
   "name": "sales invoice submit before the check qty",
   "reference_doctype": "Sales Invoice",
-  "script": "for item in doc.items:\n    if item.material_transfer == 1:\n        if item.qty < item.quotation_qty:\n            frappe.throw(f\"Row {item.idx}: Sales invoice qty is less than quotation qty\")\n    else:\n        frappe.throw(f\"Row {item.idx}: Please Scan Barcode\")\n",
+  "script": "if doc.material_transfer == \"Qrcode Against\":\n    for item in doc.items:\n        if item.material_transfer == 1:\n            if item.qty < item.quotation_qty:\n                frappe.throw(f\"Row {item.idx}: Sales invoice qty is less than quotation qty\")\n        else:\n            frappe.throw(f\"Row {item.idx}: Please Scan Barcode\")\n",
   "script_type": "DocType Event"
  }
 ]
