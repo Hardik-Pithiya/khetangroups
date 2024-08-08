@@ -268,7 +268,7 @@ class StockBalanceReport(object):
 			.inner_join(item_table)
 			.on(sle.item_code == item_table.name)
 			.select(
-				sle.item_code,
+				item_table.item_code,
 				sle.warehouse,
 				sle.posting_date,
 				sle.actual_qty,
@@ -287,7 +287,7 @@ class StockBalanceReport(object):
 				item_table.stock_uom,
 				item_table.item_name,
 			)
-			.where((sle.docstatus < 2) & (sle.is_cancelled == 0))
+			.where((sle.docstatus < 2) & (sle.is_cancelled == 0) & (item_table.disabled == 0))
 			.orderby(CombineDatetime(sle.posting_date, sle.posting_time))
 			.orderby(sle.creation)
 			.orderby(sle.actual_qty)
